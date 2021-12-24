@@ -65,7 +65,7 @@
 
 ## Matrix
 
-46. Set Matrix Zeroes
+46. ~~Set Matrix Zeroes~~
 47. Spiral Matrix
 48. Rotate Image
 49. Word Search
