@@ -52,7 +52,7 @@
 36. Merge Intervals
 37. Non-overlapping Intervals
 38. Meeting Rooms (Leetcode Premium)
-39. Meeting Rooms (Leetcode Premium)
+39. Meeting Rooms II(Leetcode Premium)
 
 ## Lists
 
@@ -65,10 +65,10 @@
 
 ## Matrix
 
-46. ~~Set Matrix Zeroes~~
+46. (!)~~Set Matrix Zeroes~~
 47. ~~Spiral Matrix~~
-48. Rotate Image
-49. Word Search
+48. (!)~~Rotate Image~~
+49. ~~Word Search~~
 
 ## String
 

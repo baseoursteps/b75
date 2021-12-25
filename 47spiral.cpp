@@ -1,10 +1,9 @@
 #include <iostream>
-#include <sys/types.h>
 #include <vector>
-using namespace std;
 
-template<typename T>
-using matrix = vector<vector<T>>;
+#include "matrix.h"
+
+using namespace std;
 
 // Given an m * n matrix return its elements in spiral order
 template<typename P>
@@ -55,12 +54,7 @@ template<typename T>
 void
 print(const matrix<T> &m)
 {
-    for (auto &&l : m) {
-        for (auto &&c : l)
-            std::cout << c << " ";
-
-        cout << "\n";
-    }
+    print_matrix(m);
 
     auto rez = do_it(m);
 
@@ -76,6 +70,12 @@ main()
     matrix<int>       m { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
     const vector<int> m_rez { 1, 2, 3, 6, 9, 8, 7, 4, 5 };
 
+    matrix<int> n { { 1, 2, 3, 4, 5 },
+                    { 6, 7, 8, 9, 10 },
+                    { 11, 12, 13, 14, 15 },
+                    { 16, 17, 18, 19, 20 },
+                    { 21, 22, 23, 24, 25 } };
+
     matrix<int>       p { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 } };
     const vector<int> p_rez { 1, 2, 3, 4, 8, 12, 11, 10, 9, 5, 6, 7 };
 
@@ -83,6 +83,8 @@ main()
     const vector<int> q_rez { 1, 2, 3 };
 
     print(m);
+    print(n);
+
     print(p);
     print(q);
 }

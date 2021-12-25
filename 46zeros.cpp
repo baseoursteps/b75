@@ -1,11 +1,12 @@
 #include <iostream>
 #include <vector>
+
+#include "matrix.h"
+
 using namespace std;
 
 // Given an m x n integer matrix matrix, if an element is 0, set its entire row
 // and column to 0's, and return the matrix.
-template<typename T>
-using matrix = vector<vector<T>>;
 
 // Keep the first line and column as flags if the corresponding column or line
 // is to be set to zero. Also keep two flags if the first line or column itself
@@ -17,8 +18,8 @@ do_it(matrix<T> &m)
 {
     bool firstColumn { false }, firstLine { false };
 
-    for (ssize_t i = 0; i < m.size(); ++i) {
-        for (ssize_t j = 0; j < m.at(i).size(); j++) {
+    for (size_t i = 0; i < m.size(); ++i) {
+        for (size_t j = 0; j < m.at(i).size(); j++) {
             if (m.at(i).at(j) == 0) {
                 if (!i)
                     firstLine = true;
@@ -50,21 +51,8 @@ do_it(matrix<T> &m)
         m.at(0) = vector<T>(m.at(0).size(), {});
 
     if (firstColumn)
-        for (ssize_t i = 0; i < m.size(); ++i)
+        for (size_t i = 0; i < m.size(); ++i)
             m.at(i).at(0) = {};
-}
-
-template<typename T>
-void
-print_matrix(const matrix<T> &m)
-{
-    for (auto &&l : m) {
-        for (auto &&c : l)
-            std::cout << c << " ";
-
-        cout << "\n";
-    }
-    cout << "\n";
 }
 
 int
