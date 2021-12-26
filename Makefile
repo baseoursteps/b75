@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-Wall -Wextra
+CFLAGS=-Wall -Wextra -ggdb3 -O0
 SOURCES=$(wildcard *.cpp)
 OBJECTS=$(SOURCES:.cpp=.out)
 
