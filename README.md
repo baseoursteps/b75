@@ -37,8 +37,8 @@
 
 ## Graph
 
-27. Clone Graph
-28. Course Schedule
+27. ~~Clone Graph~~
+28. ~~Course Schedule~~
 29. Pacific Atlantic Water Flow
 30. Number of Islands
 31. Longest Consecutive Sequence
