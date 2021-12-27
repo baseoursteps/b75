@@ -39,8 +39,8 @@
 
 27. ~~Clone Graph~~
 28. ~~Course Schedule~~
-29. Pacific Atlantic Water Flow
-30. Number of Islands
+29. ~~Pacific Atlantic Water Flow~~
+30. ~~Number of Islands~~
 31. Longest Consecutive Sequence
 32. Alien Dictionary
 33. Graph Valid Tree
