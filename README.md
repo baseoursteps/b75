@@ -43,7 +43,7 @@
 30. ~~Number of Islands~~
 31. ~~Longest Consecutive Sequence~~
 32. (!)~~Alien Dictionary~~
-33. Graph Valid Tree
+33. (!)~~Graph Valid Tree~~
 34. Number of Connected Components in an Undirected Graph
 
 ## Interval
