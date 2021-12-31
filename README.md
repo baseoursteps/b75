@@ -86,10 +86,10 @@
 ## Tree
 
 60. ~~Maximum Depth of Binary Tree~~
-61. Same Tree
-62. Invert/Flip Binary Tree
-63. Binary Tree Maximum Path Sum
-64. Binary Tree Level Order Traversal
+61. ~~Same Tree~~
+62. ~~Invert/Flip Binary Tree~~
+63. ~~Binary Tree Maximum Path Sum~~
+64. ~~Binary Tree Level Order Traversal~~
 65. Serialize and Deserialize Binary Tree
 66. Subtree of Another Tree
 67. Construct Binary Tree from Preorder and Inorder Traversal

@@ -29,10 +29,12 @@ struct Tree
     }
 
     static std::unordered_map<T, typename Tree<T>::OwnedTree>
-    from_list(const typename Tree<T>::List &vals,
-              typename Tree<T>::OwnedTree  &root)
+    from_list(typename Tree<T>::List vals, typename Tree<T>::OwnedTree &root)
 
     {
+        if (vals.empty())
+            return {};
+
         std::unordered_map<T, typename Tree<T>::OwnedTree> tree;
 
         bool rset { false };
@@ -46,6 +48,10 @@ struct Tree
                     rset = true;
                 }
             }
+
+        // must always put both left and right child -- must be uneven
+        if (vals.size() % 2 == 0)
+            vals.push_back({});
 
         for (size_t i = 0; i < vals.size() / 2; ++i) {
             auto parent = vals.at(i);
@@ -68,6 +74,9 @@ struct Tree
     friend std::ostream &
     operator<<(std::ostream &out, typename Tree<T>::OwnedTree tree)
     {
+        if (!tree)
+            return out;
+
         // bfs
         std::deque<typename Tree<T>::OwnedTree> vals;
         vals.push_back(tree);
