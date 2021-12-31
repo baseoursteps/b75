@@ -44,7 +44,7 @@
 31. ~~Longest Consecutive Sequence~~
 32. (!)~~Alien Dictionary~~
 33. (!)~~Graph Valid Tree~~
-34. Number of Connected Components in an Undirected Graph
+34. ~~Number of Connected Components in an Undirected Graph~~
 
 ## Interval
 
@@ -85,7 +85,7 @@
 
 ## Tree
 
-60. Maximum Depth of Binary Tree
+60. ~~Maximum Depth of Binary Tree~~
 61. Same Tree
 62. Invert/Flip Binary Tree
 63. Binary Tree Maximum Path Sum
