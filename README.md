@@ -90,7 +90,7 @@
 62. ~~Invert/Flip Binary Tree~~
 63. ~~Binary Tree Maximum Path Sum~~
 64. ~~Binary Tree Level Order Traversal~~
-65. Serialize and Deserialize Binary Tree
+65. ~~Serialize and Deserialize Binary Tree~~
 66. Subtree of Another Tree
 67. Construct Binary Tree from Preorder and Inorder Traversal
 68. Validate Binary Search Tree
