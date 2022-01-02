@@ -91,8 +91,8 @@
 63. ~~Binary Tree Maximum Path Sum~~
 64. ~~Binary Tree Level Order Traversal~~
 65. ~~Serialize and Deserialize Binary Tree~~
-66. Subtree of Another Tree
-67. Construct Binary Tree from Preorder and Inorder Traversal
+66. ~~Subtree of Another Tree~~
+67. ~~Construct Binary Tree from Preorder and Inorder Traversal~~
 68. Validate Binary Search Tree
 69. Kth Smallest Element in a BST
 70. Lowest Common Ancestor of BST

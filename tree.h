@@ -4,8 +4,10 @@
 #include <deque>
 #include <memory>
 #include <optional>
+#include <ostream>
 #include <unordered_map>
 #include <unordered_set>
+#include <utility>
 #include <vector>
 
 template<typename T>
@@ -26,6 +28,15 @@ struct Tree
         left { l },
         right { r }
     {
+    }
+
+    static std::pair<std::unordered_map<T, typename Tree<T>::OwnedTree>,
+                     typename Tree<T>::OwnedTree>
+    from_list(typename Tree<T>::List vals)
+    {
+        Tree<T>::OwnedTree root;
+        auto               elems = Tree<T>::from_list(vals, root);
+        return { elems, root };
     }
 
     static std::unordered_map<T, typename Tree<T>::OwnedTree>
