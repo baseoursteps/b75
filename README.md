@@ -94,8 +94,8 @@
 66. ~~Subtree of Another Tree~~
 67. ~~Construct Binary Tree from Preorder and Inorder Traversal~~
 68. ~~Validate Binary Search Tree~~
-69. Kth Smallest Element in a BST
-70. Lowest Common Ancestor of BST
+69. ~~Kth Smallest Element in a BST~~
+70. ~~Lowest Common Ancestor of a BST~~
 71. Implement Trie (Prefix Tree)
 72. Add and Search Word
 73. Word Search II
