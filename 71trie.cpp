@@ -35,7 +35,7 @@ struct Trie
     {
         m_next.resize(26);
     }
-    Trie(char c) : m_current(c)
+    explicit Trie(char c) : m_current(c)
     {
         m_next.resize(26);
     }

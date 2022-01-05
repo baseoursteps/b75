@@ -21,7 +21,7 @@ struct Tree
     Child left, right;
 
     Tree<T>() : val { {} } {}
-    Tree<T>(const T &val) : val { val } {}
+    explicit Tree<T>(const T &val) : val { val } {}
 
     Tree<T>(const T &val, const Child &l, const Child &r) :
         val { val },
@@ -97,17 +97,17 @@ struct Tree
             vals.pop_front();
             out << "current: " << curr->val << ", left: ";
 
-            if (auto left = curr->left.lock()) {
-                vals.push_back(left);
-                out << left->val;
+            if (auto l = curr->left.lock()) {
+                vals.push_back(l);
+                out << l->val;
             } else
                 out << "x";
 
             out << ", right: ";
 
-            if (auto right = curr->right.lock()) {
-                vals.push_back(right);
-                out << right->val;
+            if (auto r = curr->right.lock()) {
+                vals.push_back(r);
+                out << r->val;
             } else
                 out << "x";
 

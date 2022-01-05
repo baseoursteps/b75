@@ -33,8 +33,7 @@ print_em(const typename Tree<T>::List &list)
     if (list.empty())
         return;
 
-    typename Tree<T>::OwnedTree root;
-    auto                        elems = Tree<T>::from_list(list, root);
+    auto [elems, root] = Tree<T>::from_list(list);
 
     unordered_map<size_t, vector<T>> ordering;
     dfs<T>(root, 1, ordering);

@@ -25,8 +25,7 @@ template<typename T>
 size_t
 depth(const typename Tree<T>::List &list)
 {
-    Tree<size_t>::OwnedTree root;
-    auto                    elems = Tree<size_t>::from_list(list, root);
+    auto [elems, root] = Tree<size_t>::from_list(list);
 
     cout << root;
 

@@ -51,8 +51,7 @@ template<typename T>
 ssize_t
 print_max(const typename Tree<T>::List &list)
 {
-    typename Tree<T>::OwnedTree root;
-    auto                        elems = Tree<T>::from_list(list, root);
+    auto [elems, root] = Tree<T>::from_list(list);
 
     if (!root)
         throw "dude, stop";

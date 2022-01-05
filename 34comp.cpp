@@ -35,7 +35,7 @@ dfs(T elem, unordered_map<T, typename Graph<T>::Owned> &vals)
 
 template<typename T>
 size_t
-count_comp(typename Graph<T>::Edges &edges)
+count_comp(typename Graph<T>::Edges const &edges)
 {
     T count {};
 

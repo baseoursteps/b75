@@ -21,7 +21,7 @@ struct Graph
     Neigh neigh;
 
     Graph<T>() : val { {} } {}
-    Graph<T>(const T &val) : val(val) {}
+    explicit Graph<T>(const T &val) : val(val) {}
     Graph<T>(const T &val, const Neigh &neigh) : val(val), neigh(neigh) {}
 
     static std::unordered_map<T, typename Graph<T>::Owned>

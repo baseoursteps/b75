@@ -22,8 +22,7 @@ template<typename T>
 void
 flip(const typename Tree<T>::List &l)
 {
-    typename Tree<T>::OwnedTree root;
-    auto                        elems = Tree<T>::from_list(l, root);
+    auto [elems, root] = Tree<T>::from_list(l);
 
     cout << root << "\n";
     rotate<T>(root);

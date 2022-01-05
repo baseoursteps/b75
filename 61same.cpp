@@ -30,10 +30,8 @@ bool
 same_trees(const typename Tree<T>::List &list1,
            const typename Tree<T>::List &list2)
 {
-    typename Tree<T>::OwnedTree root1, root2;
-
-    auto elems1 = Tree<T>::from_list(list1, root1),
-         elems2 = Tree<T>::from_list(list2, root2);
+    auto [elems1, root1] = Tree<T>::from_list(list1);
+    auto [elems2, root2] = Tree<T>::from_list(list2);
 
     return are_same<T>(root1, root2);
 }

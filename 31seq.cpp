@@ -26,14 +26,14 @@ count(const vector<int> &nums)
             continue;
         }
 
-        size_t count { 1 };
+        size_t sz { 1 };
         while (i != vals.end() && vals.find((*i) + 1) != vals.end()) {
             ++i;
-            ++count;
+            ++sz;
         }
 
-        if (count > max)
-            max = count;
+        if (sz > max)
+            max = sz;
 
         if (i == vals.end())
             break;
