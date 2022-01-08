@@ -102,7 +102,7 @@
 
 ## Heap
 
-74. Merge K Sorted Lists
+74. ~~Merge K Sorted Lists~~
 75. Top K Frequent Elements
 76. Find Median from Data Stream
 
