@@ -103,7 +103,7 @@
 ## Heap
 
 74. ~~Merge K Sorted Lists~~
-75. Top K Frequent Elements
-76. Find Median from Data Stream
+75. (?)~~Top K Frequent Elements~~
+76. ~~Find Median from Data Stream~~
 
 [Source](https://medium.com/@miniChang8/75-leetcode-must-know-questions-953b3749c7e9)

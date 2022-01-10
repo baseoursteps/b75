@@ -2,8 +2,10 @@
 
 #include <cstddef>
 #include <cstdlib>
-#include <deque>
 #include <optional>
+#include <ostream>
+#include <type_traits>
+#include <vector>
 
 enum class Type
 {
@@ -20,12 +22,12 @@ public:
     void
     insert(const T &val)
     {
-        m_arr.push_front(val);
-        psort(0);
+        m_arr.push_back(val);
+        bubble_up(m_arr.size() - 1);
     }
 
     std::optional<T>
-    front()
+    front() const
     {
         if (m_arr.empty())
             return {};
@@ -39,8 +41,11 @@ public:
         std::optional<T> val;
         if (!m_arr.empty()) {
             val = m_arr.front();
-            m_arr.pop_front();
-            psort(0);
+            // !! careful -- you bubble down after placing the last element at
+            // the top for some reason
+            std::swap(m_arr.front(), m_arr.back());
+            m_arr.pop_back();
+            bubble_down(0);
         }
 
         return val;
@@ -58,37 +63,60 @@ public:
         return m_arr.size();
     }
 
+    friend std::ostream &
+    operator<<(std::ostream &out, const Heap<T, K> &other)
+    {
+        for (auto &v : other.m_arr)
+            out << v << " ";
+
+        return out;
+    }
+
 private:
     void
-    heapify()
+    bubble_up(std::size_t current)
     {
-        for (ssize_t i = m_arr.size() / 2; i >= 0; --i)
-            psort(i);
+        const auto parent = current / 2;
+        const auto cmp    = [&](std::size_t a, std::size_t b) {
+            if (K == Type::Max)
+                return m_arr.at(a) < m_arr.at(b);
+            else
+                return m_arr.at(b) < m_arr.at(a);
+        };
+
+        auto max = current;
+        if (cmp(parent, max))
+            max = parent;
+
+        if (max != current) {
+            std::swap(m_arr.at(current), m_arr.at(max));
+            bubble_up(max);
+        }
     }
 
     void
-    psort(std::size_t parent)
+    bubble_down(std::size_t root)
     {
-        auto lchild = 2 * parent + 1, rchild = 2 * parent + 2;
+        const auto lchild = 2 * root + 1, rchild = 2 * root + 2;
 
-        auto cmp = [&](std::size_t a, std::size_t b) {
+        const auto cmp = [&](std::size_t a, std::size_t b) {
             if (K == Type::Max)
-                return m_arr.at(a) <= m_arr.at(b);
+                return m_arr.at(a) < m_arr.at(b);
             else
-                return m_arr.at(a) >= m_arr.at(b);
+                return m_arr.at(b) < m_arr.at(a);
         };
 
-        auto max = parent;
+        auto max = root;
         if (lchild < m_arr.size() && cmp(max, lchild))
             max = lchild;
 
         if (rchild < m_arr.size() && cmp(max, rchild))
             max = rchild;
 
-        if (parent != max) {
-            std::swap(m_arr.at(parent), m_arr.at(max));
-            psort(max);
+        if (root != max) {
+            std::swap(m_arr.at(root), m_arr.at(max));
+            bubble_down(max);
         }
     }
-    std::deque<T> m_arr;
+    std::vector<T> m_arr;
 };
