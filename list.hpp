@@ -54,12 +54,6 @@ public:
         return m_val < other.m_val;
     }
 
-    bool
-    operator>(const LList<T> &other) const
-    {
-        return m_val > other.m_val;
-    }
-
     friend std::ostream &
     operator<<(std::ostream &out, const LList<T>::Owned &head)
     {
@@ -74,10 +68,30 @@ public:
     {
         return a->m_val < b->m_val;
     }
-    friend bool
-    operator>(const LList<T>::Owned &a, const LList<T>::Owned &b)
+
+    static void
+    reverse(Owned &head)
     {
-        return a->m_val > b->m_val;
+        if (!head)
+            return;
+
+        head = reverse({}, head);
+    }
+
+private:
+    static Owned
+    reverse(const Owned &prev, const Owned &current)
+    {
+        if (!(prev || current))
+            return prev;
+
+        if (!current)
+            return prev;
+
+        auto n          = current->m_next;
+        current->m_next = prev;
+
+        return reverse(current, n.lock());
     }
 
 private:
