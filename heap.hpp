@@ -2,6 +2,7 @@
 
 #include <cstddef>
 #include <cstdlib>
+#include <initializer_list>
 #include <optional>
 #include <ostream>
 #include <type_traits>
@@ -18,6 +19,11 @@ class Heap
 {
 public:
     Heap() = default;
+
+    Heap(std::initializer_list<T> list) : m_arr(list)
+    {
+        heapify();
+    }
 
     void
     insert(const T &val)
@@ -73,6 +79,13 @@ public:
     }
 
 private:
+    void
+    heapify()
+    {
+        for (ssize_t i = m_arr.size() / 2; i >= 0; --i)
+            bubble_down(i);
+    }
+
     void
     bubble_up(std::size_t current)
     {
