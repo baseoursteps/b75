@@ -61,7 +61,7 @@
 42. ~~Merge Two Sorted Lists~~
 43. ~~Merge K Sorted Lists~~
 44. ~~Remove Nth Node From End Of List~~
-45. Reorder List
+45. (!)~~Reorder List~~
 
 ## Matrix
 
