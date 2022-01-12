@@ -56,11 +56,11 @@
 
 ## Lists
 
-40. Reverse a Linked List
-41. Detect Cycle in a Linked List
-42. Merge Two Sorted Lists
-43. Merge K Sorted Lists
-44. Remove Nth Node From End Of List
+40. ~~Reverse a Linked List~~
+41. ~~Detect Cycle in a Linked List~~
+42. ~~Merge Two Sorted Lists~~
+43. ~~Merge K Sorted Lists~~
+44. ~~Remove Nth Node From End Of List~~
 45. Reorder List
 
 ## Matrix
