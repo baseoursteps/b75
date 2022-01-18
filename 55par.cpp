@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 
 // Given a string s containing just the characters '(', ')', '{', '}', '[' and
 // ']', determine if the input string is valid.
@@ -12,32 +13,35 @@
 using namespace std;
 
 bool
-is_valid(const string &pars)
+is_valid2(const string &pars)
 {
-    ssize_t round { 0 }, square { 0 }, curly { 0 };
-
+    vector<char> pa;
     for (auto c : pars) {
         switch (c) {
             case '(':
-                round++;
-                break;
-            case ')':
-                if (!round--)
-                    return false;
-                break;
             case '[':
-                square++;
+            case '{':
+                pa.push_back(c);
+                break;
+
+            case ')':
+                if (pa.empty() || pa.back() != '(')
+                    return false;
+                else
+                    pa.pop_back();
                 break;
             case ']':
-                if (!square--)
+                if (pa.empty() || pa.back() != '[')
                     return false;
+                else
+                    pa.pop_back();
                 break;
-            case '{':
-                ++curly;
-                break;
+
             case '}':
-                if (!curly--)
+                if (pa.empty() || pa.back() != '{')
                     return false;
+                else
+                    pa.pop_back();
                 break;
 
             default:
@@ -45,11 +49,11 @@ is_valid(const string &pars)
         }
     }
 
-    return !(round || square || curly);
+    return pa.empty();
 }
 
 int
 main()
 {
-    cout << is_valid("[()()]") << "\n";
+    cout << is_valid2("[]()[{()()}]") << is_valid2("[(])") << "\n";
 }
