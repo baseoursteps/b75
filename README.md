@@ -72,13 +72,13 @@
 
 ## String
 
-50. Longest Substring Without Repeating Characters
-51. Longest Repeating Character Replacement
-52. Minimum Window Substring
-53. Valid Anagram
-54. Group Anagrams
-55. Valid Parentheses
-56. Valid Palindrome
+50. ~~Longest Substring Without Repeating Characters~~
+51. ~~Longest Repeating Character Replacement~~
+52. ~~Minimum Window Substring~~
+53. ~~Valid Anagram~~
+54. ~~Group Anagrams~~
+55. ~~Valid Parentheses~~
+56. ~~Valid Palindrome~~
 57. Longest Palindromic Substring
 58. Palindromic Substrings
 59. Encode and Decode Strings
