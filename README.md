@@ -2,10 +2,10 @@
 
 ## Array
 
-1. Two sum
-2. Best time to buy and sell stock
-3. Contains duplicate
-4. Product of array except self
+1. ~~Two sum~~
+2. (!)~~Best time to buy and sell stock~~
+3. ~~Contains duplicate~~
+4. (!)~~Product of array except self~~
 5. Maximum Subarray
 6. Maximum Product Subarray
 7. Find Minimum in Rotated Sorted Array
