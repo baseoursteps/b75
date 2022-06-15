@@ -6,11 +6,11 @@
 2. (!)~~Best time to buy and sell stock~~
 3. ~~Contains duplicate~~
 4. (!)~~Product of array except self~~
-5. Maximum Subarray
-6. Maximum Product Subarray
-7. Find Minimum in Rotated Sorted Array
-8. Search in Rotated Sorted Array
-9. 3 sum
+5. ~~Maximum Subarray~~
+6. (!)~~Maximum Product Subarray~~
+7. ~~Find Minimum in Rotated Sorted Array~~
+8. ~~Search in Rotated Sorted Array~~
+9. (?)~~3 sum~~
 10. Container With Most Water
 
 ## Binary
