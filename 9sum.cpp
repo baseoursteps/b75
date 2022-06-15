@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <array>
 #include <iostream>
 #include <set>
 #include <unordered_map>
@@ -15,30 +16,22 @@ using namespace std;
 // Input: nums = [-1,0,1,2,-1,-4]
 // Output: [[-1,-1,2],[-1,0,1]]
 
-set<vector<int>>
+vector<array<int, 3>>
 twoSum(vector<int> &nums, int target, size_t skip)
 {
     unordered_map<int, size_t> val;
+    vector<array<int, 3>>      sol;
 
-    set<vector<int>> sol;
-
-    for (size_t i = 0; i < nums.size(); i++) {
-        if (i == skip)
-            continue;
-
+    for (size_t i = skip + 1; i < nums.size(); i++)
         val.insert({ nums.at(i), i });
-    }
 
-    for (size_t i = 0; i < nums.size(); ++i) {
-        if (i == skip)
-            continue;
-
-        auto &&f = val.find(-(nums.at(i) + target));
+    for (size_t i = skip + 2; i < nums.size(); ++i) {
+        auto &&f = val.find(-nums.at(i) - target);
 
         if (f != val.end() && f->second != i) {
-            vector<int> vals({ target, nums.at(i), f->first });
-            sort(vals.begin(), vals.end());
-            sol.insert(vals);
+            array<int, 3> vals({ target, nums.at(i), f->first });
+            sort(vals.begin(), vals.end()); // could i get away without this
+            sol.push_back(vals);
         }
     }
 
@@ -48,15 +41,14 @@ twoSum(vector<int> &nums, int target, size_t skip)
 vector<vector<int>>
 threeSum(vector<int> nums)
 {
-    // -4 -1 -1 0 1 2
-    // sort(nums.begin(), nums.end());
-
     vector<vector<int>> sol;
-    set<vector<int>>    sols;
+    set<array<int, 3>>  sols;
+
+    sort(nums.begin(), nums.end());
 
     for (size_t i = 0; i < nums.size(); i++)
         for (auto &&s : twoSum(nums, nums.at(i), i))
-            sols.insert(s);
+            sols.insert(s); // could i get away without this
 
     for (auto &&s : sols)
         sol.push_back({ s.begin(), s.end() });
