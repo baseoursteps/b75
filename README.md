@@ -10,16 +10,16 @@
 6. (!)~~Maximum Product Subarray~~
 7. ~~Find Minimum in Rotated Sorted Array~~
 8. ~~Search in Rotated Sorted Array~~
-9. (!)~~3 sum~~
-10.(!)~~Container With Most Water~~
+9. (?)~~3 sum~~
+10. (!)~~Container With Most Water~~
 
 ## Binary
 
-11. Sum of Two Integers
-12. Number of 1 Bits
-13. Counting Bits
-14. Missing Number
-15. Reverse Bits
+11. ~~Sum of Two Integers~~
+12. ~~Number of 1 Bits~~
+13. (?)~~Counting Bits~~
+14. (?)~~Missing Number~~
+15. ~~Reverse Bits~~
 
 ## DP
 
