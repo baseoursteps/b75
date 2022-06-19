@@ -49,7 +49,7 @@
 ## Interval
 
 35. ~~Insert Interval~~
-36. Merge Intervals
+36. ~~Merge Intervals~~
 37. Non-overlapping Intervals
 38. Meeting Rooms (Leetcode Premium)
 39. Meeting Rooms II(Leetcode Premium)
