@@ -80,10 +80,49 @@ search(const vector<int> &nums, int target)
     return search(nums, 0, nums.size() - 1, target);
 }
 
+int
+search2(const vector<int> &nums, int target)
+{
+    size_t l = 0;
+    size_t r = nums.size() - 1;
+
+    while (l <= r) {
+        const auto mid = l + (r - l) / 2;
+
+        if (target == nums.at(l))
+            return l;
+        else if (target == nums.at(mid))
+            return mid;
+        else if (target == nums.at(r))
+            return r;
+
+        if (nums.at(l) < nums.at(r)) {
+            if (target < nums.at(mid))
+                r = mid;
+            else
+                l = mid + 1;
+        } else if (nums.at(l) < nums.at(mid)) {
+            if (target > nums.at(l) && target < nums.at(mid))
+                r = mid;
+            else
+                l = mid + 1;
+        } else if (nums.at(mid) < nums.at(r)) {
+            if (target > nums.at(mid) && target < nums.at(r))
+                l = mid + 1;
+            else
+                r = mid;
+        } else {
+            return -1;
+        }
+    }
+
+    return -1;
+}
+
 void
 sol(const vector<int> &vals, int target)
 {
-    cout << search(vals, target) << "\n";
+    cout << search2(vals, target) << "\n";
 }
 
 int
@@ -91,6 +130,10 @@ main()
 {
     vector<int> v1 { 4, 5, 6, 7, 0, 1 }, v2 { 1 };
     int         t1 { 0 }, t2 { 3 };
+
+    for (auto &&v : v1) {
+        cout << v << " is at index: " << search2(v1, v) << "\n";
+    }
 
     sol(v1, t1); // 4
     sol(v1, t2); // -1

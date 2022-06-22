@@ -34,26 +34,24 @@ using namespace std;
 int
 findMin(const vector<int> &nums)
 {
-    int front = nums.front();
-    int mid   = nums.at(nums.size() / 2);
-    int back  = nums.back();
+    size_t left  = 0;
+    size_t right = nums.size() - 1;
 
-    // front < mid < back => get front
-    // front > mid < back => search in (front, mid]
-    // front < mid > back => search in (mid, back]
-    // else front
+    while (left != right) {
+        // if ordered
+        if (nums.at(left) <= nums.at(right))
+            return nums.at(left);
 
-    if (front < mid && mid < back)
-        return front;
-    else if (front > mid && mid < back) {
-        vector<int> v(nums.begin(), nums.begin() + (nums.size() / 2));
-        return findMin(v);
-    } else if (front < mid && mid > back) {
-        vector<int> v(nums.begin() + (nums.size() / 2) + 1, nums.end());
-        return findMin(v);
-    } else {
-        return front;
+        const auto mid = left + (right - left) / 2;
+
+        // bigger half until mid
+        if (nums.at(left) <= nums.at(mid))
+            left = mid + 1;
+        else // bigger half from mid to right
+            right = mid;
     }
+
+    return nums.at(left);
 }
 
 void
