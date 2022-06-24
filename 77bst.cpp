@@ -13,22 +13,23 @@ struct List
     List(int val) : val(val) {}
 
     static void
-    in_order(List *elem, List *&back, List *&nh, List *&biggest)
+    in_order(List *elem, List *&back, List *&head)
     {
         if (!elem)
             return;
 
-        in_order(elem->l, back, nh, biggest);
+        in_order(elem->l, back, head);
+
+        if (!head)
+            head = elem;
+
         elem->l = back;
-        back    = elem;
 
-        if (!nh)
-            nh = elem;
+        if (back)
+            back->r = elem;
+        back = elem;
 
-        if (biggest->val < elem->val)
-            biggest = elem;
-
-        in_order(elem->r, back, nh, biggest);
+        in_order(elem->r, back, head);
     }
 };
 
@@ -37,8 +38,6 @@ main()
 {
     vector<List> nodes { { 8 },  { 3 }, { 10 }, { 1 }, { 6 },
                          { 14 }, { 4 }, { 7 },  { 13 } };
-
-    List *back {}, *nh {}, *biggest { &nodes.at(0) };
 
     // should yield 1 3 4 6 7 8 10 13 14
 
@@ -60,14 +59,10 @@ main()
     // 14-> 13, {}
     nodes.at(5).l = &nodes.at(8);
 
-    List::in_order(&nodes.at(0), back, nh, biggest);
+    List *back {}, *head {};
+    List::in_order(&nodes.at(0), back, head);
 
-    for (auto prev = biggest, current = biggest->l; current != nullptr;
-         prev = current, current = current->l) {
-        current->r = prev;
-    }
-
-    for (auto &&v = nh; v != nullptr; v = v->r)
+    for (auto &&v = head; v != nullptr; v = v->r)
         cout << v->val << " ";
 
     cout << "\n";
