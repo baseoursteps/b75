@@ -55,7 +55,7 @@ wordBreak(string s, const vector<string> &words)
 {
     const unordered_set<string> wds(words.begin(), words.end());
 
-    matrix<int> sol({ s.size(), vector<int>(s.size(), 0) });
+    matrix<int> sol { s.size(), vector<int>(s.size(), 0) };
 
     for (size_t len = 0; len < s.size(); ++len) {
         for (size_t start = 0; start + len < s.size(); ++start) {
