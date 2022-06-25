@@ -27,7 +27,7 @@
 17. ~~Coin Change~~
 18. ~~Longest Increasing Subsequence~~
 19. ~~Longest Common Subsequence~~
-20. Word Break Problem
+20. (!)~~Word Break Problem~~
 21. Combination Sum
 22. House Robber
 23. House Robber II
