@@ -28,7 +28,7 @@
 18. [~~Longest Increasing Subsequence~~](18lis.cpp)
 19. [~~Longest Common Subsequence~~](19lcs.cpp)
 20. [(!)~~Word Break Problem~~](20wb.cpp)
-21. Combination Sum
+21. [(!)~~Combination Sum~~](21cs.cpp)
 22. House Robber
 23. House Robber II
 24. Decode Ways
@@ -76,7 +76,7 @@
 51. [~~Longest Repeating Character Replacement~~](51lc.cpp)
 52. [~~Minimum Window Substring~~](52wnd.cpp)
 53. [~~Valid Anagram~~](53ana.cpp)
-54. ~~Group Anagrams~~
+54. Group Anagrams
 55. [~~Valid Parentheses~~](55par.cpp)
 56. [~~Valid Palindrome~~](56pdrome.cpp)
 57. [(?)~~Longest Palindromic Substring~~](57lpal.cpp)
