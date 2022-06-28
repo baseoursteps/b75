@@ -29,8 +29,8 @@
 19. [~~Longest Common Subsequence~~](19lcs.cpp)
 20. [(!)~~Word Break Problem~~](20wb.cpp)
 21. [(!)~~Combination Sum~~](21cs.cpp)
-22. House Robber
-23. House Robber II
+22. [~~House Robber~~](22hr.cpp)
+23. [~~House Robber II~~](23hr2.cpp)
 24. Decode Ways
 25. Unique Paths
 26. Jump Game
