@@ -1,8 +1,10 @@
 #include <algorithm>
 #include <array>
+#include <cstddef>
 #include <iostream>
 #include <set>
 #include <unordered_map>
+#include <utility>
 #include <vector>
 
 using namespace std;
@@ -15,43 +17,38 @@ using namespace std;
 
 // Input: nums = [-1,0,1,2,-1,-4]
 // Output: [[-1,-1,2],[-1,0,1]]
-
-vector<array<int, 3>>
-twoSum(vector<int> &nums, int target, size_t skip)
-{
-    unordered_map<int, size_t> val;
-    vector<array<int, 3>>      sol;
-
-    for (size_t i = skip + 1; i < nums.size(); i++)
-        val.insert({ nums.at(i), i });
-
-    for (size_t i = skip + 2; i < nums.size(); ++i) {
-        auto &&f = val.find(-nums.at(i) - target);
-
-        if (f != val.end() && f->second != i) {
-            array<int, 3> vals({ target, nums.at(i), f->first });
-            sort(vals.begin(), vals.end()); // could i get away without this
-            sol.push_back(vals);
-        }
-    }
-
-    return sol;
-}
-
 vector<vector<int>>
-threeSum(vector<int> nums)
+tsum(vector<int> nums)
 {
     vector<vector<int>> sol;
-    set<array<int, 3>>  sols;
+
+    if (nums.size() < 3)
+        return sol;
 
     sort(nums.begin(), nums.end());
 
-    for (size_t i = 0; i < nums.size(); i++)
-        for (auto &&s : twoSum(nums, nums.at(i), i))
-            sols.insert(s); // could i get away without this
+    for (size_t i = 0; i < nums.size() - 2; ++i) {
+        if (i && nums.at(i - 1) == nums.at(i))
+            continue;
 
-    for (auto &&s : sols)
-        sol.push_back({ s.begin(), s.end() });
+        size_t left  = i + 1;
+        size_t right = nums.size() - 1;
+
+        while (left < right) {
+            auto sum = nums.at(i) + nums.at(left) + nums.at(right);
+            if (sum == 0) {
+                sol.push_back({ nums.at(i), nums.at(left), nums.at(right) });
+
+                left++;
+                while (left < right && nums.at(left) == nums.at(left - 1))
+                    left++;
+
+            } else if (sum > 0)
+                --right;
+            else
+                ++left;
+        }
+    }
 
     return sol;
 }
@@ -59,7 +56,7 @@ threeSum(vector<int> nums)
 void
 sol(const vector<int> &v)
 {
-    for (auto &&arr : threeSum(v)) {
+    for (auto &&arr : tsum(v)) {
         for (auto &&v : arr)
             cout << v << " ";
         cout << "\n";
@@ -69,6 +66,7 @@ sol(const vector<int> &v)
 int
 main()
 {
-    vector<int> vals { -1, 0, 1, 2, -1, -4 };
+    vector<int> vals { -1, 0, 1, 2, -1, -4 }, vals2 { 0, 0, 0 };
+
     sol(vals);
 }
