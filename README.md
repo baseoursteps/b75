@@ -10,7 +10,7 @@
 6. [(!)~~Maximum Product Subarray~~](6prod.cpp)
 7. [~~Find Minimum in Rotated Sorted Array~~](7rot.cpp)
 8. [~~Search in Rotated Sorted Array~~](8find.cpp)
-9. [(?)~~3 sum~~](9sum.cpp)
+9. [(!)~~3 sum~~](9sum.cpp)
 10. [(!)~~Container With Most Water~~](10water.cpp)
 
 ## Binary
@@ -111,4 +111,5 @@
 ## Misc
 
 77. [~~Convert BST to doubly-linked list in-place~~](77bst.cpp)
+78. Longest path cost in binary tree, then normalise all the other paths
 
