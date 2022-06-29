@@ -73,12 +73,12 @@ numDecodingCached(string_view s, unordered_map<string_view, int> &sol)
 
     int sum {};
     for (size_t i = 0; i < std::min(size_t(2), s.size()); ++i) {
-        auto        fhr = toChar(s, i + 1);
-        string_view sh  = s.substr(i + 1);
+        auto fhr = toChar(s, i + 1);
 
         if (fhr) {
-            int    shr {};
-            auto &&hit = sol.find(sh);
+            int         shr {};
+            string_view sh  = s.substr(i + 1);
+            auto      &&hit = sol.find(sh);
             if (hit != sol.end())
                 shr = hit->second;
             else

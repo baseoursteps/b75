@@ -31,7 +31,7 @@
 21. [(!)~~Combination Sum~~](21cs.cpp)
 22. [~~House Robber~~](22hr.cpp)
 23. [~~House Robber II~~](23hr2.cpp)
-24. Decode Ways
+24. [~~Decode Ways~~](24dw.cpp)
 25. Unique Paths
 26. Jump Game
 
