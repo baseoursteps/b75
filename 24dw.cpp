@@ -1,7 +1,9 @@
 #include <algorithm>
 #include <cstddef>
+#include <cstdlib>
 #include <iostream>
 #include <string>
+#include <string_view>
 #include <unordered_map>
 #include <vector>
 
@@ -44,21 +46,19 @@ using namespace std;
 // Explanation: "06" cannot be mapped to "F" because of the leading zero ("6" is
 // different from "06").
 bool
-toChar(const string &a, size_t len)
+toChar(string_view a, size_t len)
 {
     if (len == 1) {
         auto fc = a.at(0);
         if (fc > '0' && fc <= '9')
             return true;
-        else
-            return false;
 
     } else if (len == 2) {
         auto fc = a.at(0);
         if (fc > '0' && fc < '9') {
-            auto ch = atoi(a.substr(0, 3).c_str());
-            cout << ch << "\n";
-            if (ch > 1 && ch < 27)
+            auto sc  = a.at(1);
+            int  num = (fc - '0') * 10 + sc - '0';
+            if (num < 27)
                 return true;
         }
     }
@@ -67,26 +67,27 @@ toChar(const string &a, size_t len)
 }
 
 int
-numDecodingCached(const string &s, unordered_map<string, int> &sol)
+numDecodingCached(string_view s, unordered_map<string_view, int> &sol)
 {
     if (s.empty())
         return 1;
 
     int sum {};
     for (size_t i = 0; i < std::min(size_t(2), s.size()); ++i) {
-        auto fh = s.substr(0, i + 1);
-        auto sh = s.substr(i + 1);
+        auto        fhr = toChar(s, i + 1);
+        string_view sh  = s.substr(i + 1);
 
-        auto fhr = toChar(fh, i + 1);
+        if (fhr) {
+            int    shr {};
+            auto &&hit = sol.find(sh);
+            if (hit != sol.end())
+                shr = hit->second;
+            else
+                shr = numDecodingCached(sh, sol);
 
-        int shr {};
-        if (sol.count(sh))
-            shr = sol.at(sh);
-        else
-            shr = numDecodingCached(sh, sol);
-
-        if (fhr && shr)
-            sum += shr;
+            if (shr)
+                sum += shr;
+        }
     }
 
     sol.insert({ s, sum });
@@ -97,7 +98,7 @@ numDecodingCached(const string &s, unordered_map<string, int> &sol)
 int
 numDecodings(string s)
 {
-    unordered_map<string, int> sol;
+    unordered_map<string_view, int> sol;
     return numDecodingCached(s, sol);
 }
 
