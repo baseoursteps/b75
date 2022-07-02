@@ -32,8 +32,8 @@
 22. [~~House Robber~~](22hr.cpp)
 23. [~~House Robber II~~](23hr2.cpp)
 24. [~~Decode Ways~~](24dw.cpp)
-25. Unique Paths
-26. Jump Game
+25. [~~Unique Paths~~](25up.cpp)
+26. [~~Jump Game~~](26jmp.cpp)
 
 ## Graph
 
