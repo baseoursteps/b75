@@ -108,8 +108,40 @@
 
 [Source](https://medium.com/@miniChang8/75-leetcode-must-know-questions-953b3749c7e9)
 
-## Misc
+## Misc and Grind75
 
 77. [~~Convert BST to doubly-linked list in-place~~](77bst.cpp)
 78. Longest path cost in binary tree, then normalise all the other paths
-
+79. [~~Flood Fill~~](79ff.cpp)
+80. Balanced Binary Tree
+81. Implement Queue Using Stacks
+82. First Bad Version
+83. Ransom Note
+84. Majority Element
+85. Diameter of Binary Tree
+86. Middle of Linked List
+87. 01 Matrix
+88. K Closest Points to Origin
+89. Binary Tree Level Order Traversal
+90. Evaluate RPN
+91. Course Schedule
+92. Min Stack
+93. Rotting Oranges
+94. Permutations
+95. Time-based Key-Value Store
+96. Accounts Merge
+97. Sort Colors
+98. Partition Equal Subset Sum
+99. String to Integer (atoi)
+100. Subsets
+101. Binary Tree Right-side View
+102. Letter Combinations of a Phone Number
+103. Find All Anagrams in a String
+104. Minimum Height Trees
+105. Task Scheduler
+106. LRU Cache
+107. Trapping Rain Water
+108. Word Ladder
+109. Basic Calculator
+110. Maximum Profit in Job Scheduling
+111. Largest Rectangle in Histogram
