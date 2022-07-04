@@ -117,8 +117,8 @@
 81. [~~Implement Queue Using Stacks~~](81qs.cpp)
 82. [~~First Bad Version~~](82fbv.cpp)
 83. [~~Ransom Note~~](83ran.cpp)
-84. Majority Element
-85. Diameter of Binary Tree
+84. [~~Majority Element~~](84me.cpp)
+85. [~~Diameter of Binary Tree~~](85dbt.cpp)
 86. Middle of Linked List
 87. 01 Matrix
 88. K Closest Points to Origin
