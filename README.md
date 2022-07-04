@@ -113,10 +113,10 @@
 77. [~~Convert BST to doubly-linked list in-place~~](77bst.cpp)
 78. Longest path cost in binary tree, then normalise all the other paths
 79. [~~Flood Fill~~](79ff.cpp)
-80. Balanced Binary Tree
-81. Implement Queue Using Stacks
-82. First Bad Version
-83. Ransom Note
+80. [~~Balanced Binary Tree~~](80bt.cpp)
+81. [~~Implement Queue Using Stacks~~](81qs.cpp)
+82. [~~First Bad Version~~](82fbv.cpp)
+83. [~~Ransom Note~~](83ran.cpp)
 84. Majority Element
 85. Diameter of Binary Tree
 86. Middle of Linked List
