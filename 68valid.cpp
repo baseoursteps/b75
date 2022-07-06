@@ -1,26 +1,23 @@
-#include <iostream>
-
 #include "tree.h"
+#include <algorithm>
+#include <functional>
+#include <iostream>
+#include <vector>
 
 using namespace std;
 
 template<typename T>
-bool
-_is_bst(typename Tree<T>::Child root)
+void
+_is_bst(typename Tree<T>::Child root, vector<std::reference_wrapper<T>> &vals)
 {
     auto locked = root.lock();
 
     if (!locked)
-        return true;
+        return;
 
-    auto ok { true };
-    if (auto llock = locked->left.lock())
-        ok &= locked->val > llock->val;
-
-    if (auto rlock = locked->right.lock())
-        ok &= locked->val < rlock->val;
-
-    return ok && _is_bst<T>(locked->left) && _is_bst<T>(locked->right);
+    _is_bst(locked->left, vals);
+    vals.push_back(locked->val);
+    _is_bst(locked->right, vals);
 }
 
 template<typename T>
@@ -28,7 +25,9 @@ bool
 is_bst(typename Tree<T>::List const &l1)
 {
     auto [elems, root] = Tree<T>::from_list(l1);
-    return _is_bst<T>(root);
+    std::vector<std::reference_wrapper<T>> vals;
+    _is_bst(root, vals);
+    return std::is_sorted(vals.begin(), vals.end());
 }
 
 int
@@ -40,6 +39,9 @@ main()
     // false
     Tree<int>::List t2 { 5, 1, 4, {}, {}, 3, 6 };
 
-    // 10
-    cout << is_bst<int>(t1) << is_bst<int>(t2) << "\n";
+    // false
+    Tree<int>::List t3 { 5, 4, 6, {}, {}, 3, 7 };
+
+    // 100
+    cout << is_bst<int>(t1) << is_bst<int>(t2) << is_bst<int>(t3) << "\n";
 }
