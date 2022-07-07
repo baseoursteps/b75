@@ -119,8 +119,8 @@
 83. [~~Ransom Note~~](83ran.cpp)
 84. [~~Majority Element~~](84me.cpp)
 85. [~~Diameter of Binary Tree~~](85dbt.cpp)
-86. Middle of Linked List
-87. 01 Matrix
+86. [~~Middle of Linked List~~](86mid.cpp)
+87. [(!)~~01 Matrix~~](87m.cpp)
 88. K Closest Points to Origin
 89. Binary Tree Level Order Traversal
 90. Evaluate RPN
