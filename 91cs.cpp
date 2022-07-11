@@ -32,9 +32,15 @@ using namespace std;
 // prerequisites[i].length == 2
 // 0 <= ai, bi < numCourses
 // All the pairs prerequisites[i] are unique.
+
+bool
+kahn(size_t num, const vector<vector<int>> &pre);
+
 bool
 canFinish(int numCourses, const vector<vector<int>> &prerequisites)
 {
+    //return kahn(numCourses, prerequisites);
+
     vector<vector<int>> deps(numCourses, vector<int>());
 
     for (auto &&e : prerequisites)
@@ -61,7 +67,41 @@ canFinish(int numCourses, const vector<vector<int>> &prerequisites)
     return true;
 }
 
-// TODO Kahn's algo
+// Kahn's algo
+bool
+kahn(size_t num, const vector<vector<int>> &pre)
+{
+    vector<vector<int>> deps(num, vector<int>());
+    vector<int>         dgs(num, 0);
+
+    for (auto &&e : pre)
+        deps.at(e.at(1)).push_back(e.at(0));
+
+    for (auto &&node : deps)
+        for (auto &&dep : node)
+            dgs.at(dep)++;
+
+    for (size_t i = 0; i < num; ++i) {
+        size_t j = 0;
+
+        // find first node with zero in degree
+        while (j < num && dgs.at(j))
+            j++;
+
+        if (j < num) {
+            // mark as visited
+            dgs.at(j) = -1;
+
+            // reduce in degree of neigh
+            for (auto &&n : deps.at(j))
+                dgs.at(n)--;
+
+        } else // if none, then there's at least a cycle in our graph
+            return false;
+    }
+
+    return true;
+}
 
 int
 main()
