@@ -61,6 +61,8 @@ canFinish(int numCourses, const vector<vector<int>> &prerequisites)
     return true;
 }
 
+// TODO Kahn's algo
+
 int
 main()
 {
