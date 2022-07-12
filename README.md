@@ -126,8 +126,8 @@
 90. [~~Evaluate RPN~~](90rpn.cpp)
 91. [(!)~~Course Schedule~~](91cs.cpp)
 92. [~~Min Stack~~](92ms.cpp)
-93. Rotting Oranges
-94. Permutations
+93. [~~Rotting Oranges~~](93ro.cpp)
+94. [(!)~~Permutations~~](94perm.cpp)
 95. Time-based Key-Value Store
 96. Accounts Merge
 97. Sort Colors
