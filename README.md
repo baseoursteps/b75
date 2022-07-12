@@ -125,7 +125,7 @@
 89. [~~Binary Tree Level Order Traversal~~](89lot.cpp)
 90. [~~Evaluate RPN~~](90rpn.cpp)
 91. [(!)~~Course Schedule~~](91cs.cpp)
-92. Min Stack
+92. [~~Min Stack~~](92ms.cpp)
 93. Rotting Oranges
 94. Permutations
 95. Time-based Key-Value Store
