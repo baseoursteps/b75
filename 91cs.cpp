@@ -34,13 +34,8 @@ using namespace std;
 // All the pairs prerequisites[i] are unique.
 
 bool
-kahn(size_t num, const vector<vector<int>> &pre);
-
-bool
 canFinish(int numCourses, const vector<vector<int>> &prerequisites)
 {
-    //return kahn(numCourses, prerequisites);
-
     vector<vector<int>> deps(numCourses, vector<int>());
 
     for (auto &&e : prerequisites)
@@ -103,16 +98,61 @@ kahn(size_t num, const vector<vector<int>> &pre)
     return true;
 }
 
+bool
+dfs(const vector<vector<int>> &adj,
+    unordered_set<int>        &todo,
+    unordered_set<int>        &done,
+    int                        val)
+{
+    if (todo.count(val))
+        return false;
+
+    if (done.count(val))
+        return true;
+
+    todo.insert(val);
+
+    for (auto &&neigh : adj.at(val))
+        if (!dfs(adj, todo, done, neigh))
+            return false;
+
+    todo.erase(val);
+    done.insert(val);
+
+    return true;
+}
+
+bool
+topo_dfs(size_t num, const vector<vector<int>> &pre)
+{
+    vector<vector<int>> adj(num, vector<int>());
+    unordered_set<int>  done, todo;
+
+    for (auto &&rule : pre)
+        adj.at(rule.at(1)).push_back(rule.at(0));
+
+    for (size_t i = 0; i < num; ++i)
+        if (done.count(i) == 0 && !dfs(adj, todo, done, i))
+            return false;
+
+    return true;
+}
+
+bool
+sol(size_t num, const vector<vector<int>> &pre)
+{
+    return topo_dfs(num, pre);
+}
+
 int
 main()
 {
     // true
-    cout << canFinish(5, { { 1, 4 }, { 2, 4 }, { 3, 1 }, { 3, 2 } }) << "\n\n";
+    cout << sol(5, { { 1, 4 }, { 2, 4 }, { 3, 1 }, { 3, 2 } }) << "\n\n";
     // false
-    cout << canFinish(4, { { 0, 1 }, { 3, 1 }, { 1, 3 }, { 3, 2 } }) << "\n\n";
+    cout << sol(4, { { 0, 1 }, { 3, 1 }, { 1, 3 }, { 3, 2 } }) << "\n\n";
     // true
-    cout << canFinish(
-        8,
-        { { 1, 0 }, { 2, 6 }, { 1, 7 }, { 6, 4 }, { 7, 0 }, { 0, 5 } });
+    cout << sol(8,
+                { { 1, 0 }, { 2, 6 }, { 1, 7 }, { 6, 4 }, { 7, 0 }, { 0, 5 } });
     cout << "\n\n";
 }
