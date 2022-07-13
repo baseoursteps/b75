@@ -128,8 +128,8 @@
 92. [~~Min Stack~~](92ms.cpp)
 93. [~~Rotting Oranges~~](93ro.cpp)
 94. [(!)~~Permutations~~](94perm.cpp)
-95. Time-based Key-Value Store
-96. Accounts Merge
+95. [~~Time-based Key-Value Store~~](95tmap.cpp)
+96. [(!)~~Accounts Merge~~](96am.cpp)
 97. Sort Colors
 98. Partition Equal Subset Sum
 99. String to Integer (atoi)
