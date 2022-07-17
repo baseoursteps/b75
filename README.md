@@ -131,11 +131,11 @@
 95. [~~Time-based Key-Value Store~~](95tmap.cpp)
 96. [(!)~~Accounts Merge~~](96am.cpp)
 97. [~~Sort Colors~~](97sc.cpp)
-98. Partition Equal Subset Sum
-99. String to Integer (atoi)
-100. Subsets
-101. Binary Tree Right-side View
-102. Letter Combinations of a Phone Number
+98. [(!)~~Partition Equal Subset Sum~~](98pess.cpp)
+99. [~~String to Integer (atoi)~~](99atoi.cpp)
+100. [(!)~~Subsets~~](100ss.cpp)
+101. [~~Binary Tree Right-side View~~](101rsv.cpp)
+102. [Letter Combinations of a Phone Number](102pn.cpp)
 103. Find All Anagrams in a String
 104. Minimum Height Trees
 105. Task Scheduler
