@@ -30,33 +30,30 @@ struct TreeNode
 vector<vector<int>>
 levelOrder(TreeNode *root)
 {
-    unordered_map<TreeNode *, size_t> levels;
-    queue<TreeNode *>                 q;
+    queue<TreeNode *> q;
 
     q.push(root);
-    levels.insert({ root, 0 });
     vector<vector<int>> sol;
 
     while (q.size()) {
-        auto v = q.front();
-        q.pop();
+        auto        tmp = move(q);
+        vector<int> level;
 
-        if (v) {
-            if (sol.size() == levels.at(v))
-                sol.push_back({});
+        while (tmp.size()) {
+            auto f = tmp.front();
+            tmp.pop();
 
-            sol.at(levels.at(v)).push_back(v->val);
+            if (!f)
+                continue;
 
-            if (auto l = v->left; l) {
-                q.push(l);
-                levels.insert({ l, levels.at(v) + 1 });
-            }
+            level.push_back(f->val);
 
-            if (auto r = v->right; r) {
-                q.push(r);
-                levels.insert({ r, levels.at(v) + 1 });
-            }
+            q.push(f->left);
+            q.push(f->right);
         }
+
+        if (level.size()) // or not if you want to also pretty print levels
+            sol.push_back(move(level));
     }
 
     return sol;
