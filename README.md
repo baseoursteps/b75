@@ -137,8 +137,8 @@
 101. [~~Binary Tree Right-side View~~](101rsv.cpp)
 102. [(!)~~Letter Combinations of a Phone Number~~](102pn.cpp)
 103. [(!)~~Find All Anagrams in a String~~](103ana.cpp)
-104. Minimum Height Trees
-105. Task Scheduler
+104. [(!)~~Minimum Height Trees~~](104ht.cpp)
+105. [(!)~~Task Scheduler~~](105ts.cpp)
 106. LRU Cache
 107. Trapping Rain Water
 108. Word Ladder
