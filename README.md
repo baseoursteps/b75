@@ -139,7 +139,7 @@
 103. [(!)~~Find All Anagrams in a String~~](103ana.cpp)
 104. [(!)~~Minimum Height Trees~~](104ht.cpp)
 105. [(!)~~Task Scheduler~~](105ts.cpp)
-106. LRU Cache
+106. [(!)~~LRU Cache~~](106lru.cpp)
 107. Trapping Rain Water
 108. Word Ladder
 109. Basic Calculator
