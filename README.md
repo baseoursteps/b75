@@ -140,8 +140,8 @@
 104. [(!)~~Minimum Height Trees~~](104ht.cpp)
 105. [(!)~~Task Scheduler~~](105ts.cpp)
 106. [(!)~~LRU Cache~~](106lru.cpp)
-107. Trapping Rain Water
-108. Word Ladder
+107. [(!)~~Trapping Rain Water~~](107trp.cpp)
+108. [(!)~~Word Ladder~~](108wl.cpp)
 109. Basic Calculator
 110. Maximum Profit in Job Scheduling
 111. Largest Rectangle in Histogram
