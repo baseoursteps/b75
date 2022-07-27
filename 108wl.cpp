@@ -49,31 +49,35 @@ ladderLength(string beginWord, string endWord, vector<string> &wordList)
         return 0;
     }
 
-    bool contains { false };
-    if (find(wordList.begin(), wordList.end(), beginWord) == wordList.end()) {
+    int    nm {};
+    size_t beginIdx {};
+    for (beginIdx = 0;
+         beginIdx < wordList.size() && wordList.at(beginIdx) != beginWord;
+         ++beginIdx) {
+    }
+    if (beginIdx == wordList.size()) {
         wordList.push_back(beginWord);
+        nm = 2;
     } else {
-        contains = true;
+        nm = 1;
     }
 
-    unordered_map<string_view, vector<string_view>> adj;
+    vector<vector<size_t>> adj { wordList.size() + 1 };
     for (size_t i = 0; i < wordList.size(); ++i) {
         for (size_t j = 0; j < wordList.size(); ++j) {
             if (i == j) {
                 continue;
             }
             if (one_diff(wordList.at(i), wordList.at(j))) {
-                adj[wordList.at(i)].push_back(wordList.at(j));
+                adj.at(i).push_back(j);
             }
         }
     }
 
-    int mn = contains ? 1 : 2;
+    queue<size_t>         q;
+    unordered_set<size_t> vis;
 
-    queue<string_view>         q;
-    unordered_set<string_view> vis;
-
-    q.push(beginWord);
+    q.push(beginIdx);
     while (q.size()) {
         auto nq = move(q);
         while (nq.size()) {
@@ -82,14 +86,14 @@ ladderLength(string beginWord, string endWord, vector<string> &wordList)
             vis.insert(val);
 
             for (auto &&n : adj.at(val)) {
-                if (n == endWord) {
-                    return mn;
+                if (wordList.at(n) == endWord) {
+                    return nm;
                 } else if (!vis.count(n)) {
                     q.push(n);
                 }
             }
         }
-        mn++;
+        nm++;
     }
 
     return 0;
