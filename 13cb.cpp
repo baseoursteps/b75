@@ -25,7 +25,6 @@ count(int n)
     while (n) {
         c++;
         n &= (n - 1);
-        n >>= 1;
     }
 
     return c;

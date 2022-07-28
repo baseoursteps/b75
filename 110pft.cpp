@@ -1,8 +1,10 @@
 #include <algorithm>
 #include <cstddef>
 #include <deque>
+#include <functional>
 #include <iostream>
 #include <map>
+#include <tuple>
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
@@ -103,7 +105,9 @@ jobSchedulingA(vector<int> &startTime,
 }
 
 int
-jobScheduling(vector<int> &startTime, vector<int> &endTime, vector<int> &profit)
+jobSchedulingBound(vector<int> &startTime,
+                   vector<int> &endTime,
+                   vector<int> &profit)
 {
     vector<tuple<int, int, int>> zpd { startTime.size() };
 
@@ -127,10 +131,54 @@ jobScheduling(vector<int> &startTime, vector<int> &endTime, vector<int> &profit)
     return dp.back().second;
 }
 
+// TODO -- What is happening here?
+int
+jobSchedulingHeap(vector<int> &startTime,
+                  vector<int> &endTime,
+                  vector<int> &profit)
+{
+    vector<tuple<int, int, int>> hp;
+    for (size_t i = 0; i < startTime.size(); ++i) {
+        hp.emplace_back(startTime.at(i), endTime.at(i), profit.at(i));
+    }
+
+    // auto ph = [](auto &&h) {
+    //     for (auto &&[s, e, p] : h) {
+    //         cout << "[" << s << " " << e << " " << p << "], ";
+    //     }
+    //     cout << "\n";
+    // };
+
+    make_heap(hp.begin(), hp.end(), greater<> {});
+
+    int res {};
+
+    while (hp.size()) {
+        const auto [s, e, p] = hp.front();
+        pop_heap(hp.begin(), hp.end(), greater<> {});
+        hp.pop_back();
+
+        if (s < e) {
+            hp.emplace_back(e, s, res + p);
+            push_heap(hp.begin(), hp.end(), greater<> {});
+        } else {
+            res = std::max(res, p);
+        }
+    }
+
+    return res;
+}
+
+void
+sol(vector<int> &startTime, vector<int> &endTime, vector<int> &profit)
+{
+    cout << jobSchedulingHeap(startTime, endTime, profit) << "\n";
+}
+
 int
 main()
 {
     vector<int> s1 { 1, 2, 3, 4, 6 }, e1 { 3, 5, 10, 6, 9 },
         p1 { 20, 20, 100, 70, 60 };
-    cout << jobScheduling(s1, e1, p1) << "\n";
+    sol(s1, e1, p1);
 }

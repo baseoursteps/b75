@@ -14,7 +14,6 @@ hammingWeight(uint32_t n)
     while (n) {
         count++;
         n = n & (n - 1);
-        n >>= 1;
     }
 
     return count;
