@@ -145,3 +145,4 @@
 109. [(!)~~Basic Calculator~~](109bc.cpp)
 110. [(!?)~~Maximum Profit in Job Scheduling~~](110pft.cpp)
 111. [(!)~~Largest Rectangle in Histogram~~](111hst.cpp)
+112. [~~Reverse a singly-linked list between to indices~~](112lst.cpp)
