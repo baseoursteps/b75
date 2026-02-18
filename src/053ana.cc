@@ -13,28 +13,29 @@ using namespace std;
 // once.
 
 bool
-is_anagram(const string &s, const string &t)
+isAnagram(string s, string t)
 {
-    unordered_map<char, size_t> chars;
-
-    for (auto c : s)
-        chars[c]++;
-
-    for (auto c : t) {
-        auto f = chars.find(c);
-
-        if (f == chars.end())
-            return false;
-        else if (!--f->second)
-            chars.erase(f);
+    unordered_map<char, int> letters;
+    for (auto c : s) {
+        letters[c]++;
     }
 
-    return chars.empty();
+    for (auto c : t) {
+        letters[c]--;
+    }
+
+    for (auto &&[_, v] : letters) {
+        if (v != 0) {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 int
 main()
 {
-    cout << is_anagram("anagram", "nagaram") << " " << is_anagram("rat", "car")
+    cout << isAnagram("anagram", "nagaram") << " " << isAnagram("rat", "car")
          << "\n";
 }

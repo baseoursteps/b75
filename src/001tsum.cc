@@ -13,22 +13,18 @@ using namespace std;
 // go through `nums` and keep a mapping of `target - nums.at(i)` => `i`.
 // go again through `nums` and search for `nums.at(i)`. if found and `i` !=
 // current index save solution
-vector<size_t>
-sol(vector<int> &nums, int target)
+vector<int>
+twoSum(vector<int> &nums, int target)
 {
-    unordered_map<int, size_t> mp;
-
+    unordered_map<int, size_t> processed;
     for (size_t i = 0; i < nums.size(); ++i) {
-        mp.insert({ target - nums.at(i), i });
-    }
-
-    for (size_t i = 0; i < nums.size(); ++i) {
-        auto idx = mp.find(nums.at(i));
-        if (idx != mp.end() && idx->second != i) {
-            return { i, idx->second };
+        int  found = target - nums.at(i);
+        auto it    = processed.find(found);
+        if (it != processed.end()) {
+            return { int(it->second), int(i) };
         }
+        processed.insert({ nums.at(i), i });
     }
-
     return {};
 }
 
@@ -38,7 +34,7 @@ main()
     vector<int> nums { 2, 7, 11, 15 };
     int         target { 9 };
 
-    for (auto &&v : sol(nums, target)) {
+    for (auto &&v : twoSum(nums, target)) {
         cout << v << " ";
     }
 

@@ -2,8 +2,22 @@
 
 ## Array
 
-1. [~~Two sum~~](1tsum.cpp)
-2. [(!)~~Best time to buy and sell stock~~](2stonks.cpp)
+1. [~~Two sum~~](src/001tsum.cc)
+
+   Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+   You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+   You can return the answer in any order.
+
+2. [(!)~~Best time to buy and sell stock~~](src/002stonks.cc)
+
+   You are given an array prices where prices[i] is the price of a given stock on the ith day.
+
+   You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+
+   Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
+
 3. [~~Contains duplicate~~](3dup.cpp)
 4. [(!)~~Product of array except self~~](4prod.cpp)
 5. [~~Maximum Subarray~~](5max.cpp)
@@ -12,6 +26,7 @@
 8. [~~Search in Rotated Sorted Array~~](8find.cpp)
 9. [(!)~~3 sum~~](9sum.cpp)
 10. [(!)~~Container With Most Water~~](10water.cpp)
+
 
 ## Binary
 
@@ -58,7 +73,14 @@
 
 40. [~~Reverse a Linked List~~](40rev.cpp)
 41. [~~Detect Cycle in a Linked List~~](41cycle.cpp)
-42. [~~Merge Two Sorted Lists~~](42merge.cpp)
+42. [~~Merge Two Sorted Lists~~](src/042merge.cc)
+
+    You are given the heads of two sorted linked lists list1 and list2.
+
+    Merge the two lists into one sorted list. The list should be made by splicing together the nodes of the first two lists.
+
+    Return the head of the merged linked list.
+
 43. [~~Merge K Sorted Lists~~](43merge.cpp)
 44. [~~Remove Nth Node From End Of List~~](44end.cpp)
 45. [(!)~~Reorder List~~](45reorder.cpp)
@@ -75,10 +97,29 @@
 50. [~~Longest Substring Without Repeating Characters~~](50ls.cpp)
 51. [~~Longest Repeating Character Replacement~~](51lc.cpp)
 52. [~~Minimum Window Substring~~](52wnd.cpp)
-53. [~~Valid Anagram~~](53ana.cpp)
+53. [~~Valid Anagram~~](src/053ana.cc)
+
+    Given two strings s and t, return true if t is an of s, and false otherwise.
+
+    An anagram is a word or phrase formed by rearranging the letters of a different word or phrase, using all the original letters exactly once.
+
 54. [~~Group Anagrams~~](54ga.cpp)
-55. [~~Valid Parentheses~~](55par.cpp)
-56. [~~Valid Palindrome~~](56pdrome.cpp)
+55. [~~Valid Parentheses~~](src/055par.cc)
+
+    Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+    An input string is valid if:
+
+        - Open brackets must be closed by the same type of brackets.
+        - Open brackets must be closed in the correct order.
+        - Every close bracket has a corresponding open bracket of the same type.
+
+56. [~~Valid Palindrome~~](src/056pdrome.cc)
+
+    A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
+
+    Given a string s, return true if it is a palindrome, or false otherwise.
+
 57. [(?)~~Longest Palindromic Substring~~](57lpal.cpp)
 58. [~~Palindromic Substrings~~](58nps.cpp)
 59. [~~Encode and Decode Strings~~](59ende.cpp)
@@ -87,7 +128,10 @@
 
 60. [~~Maximum Depth of Binary Tree~~](60depth.cpp)
 61. [~~Same Tree~~](61same.cpp)
-62. [~~Invert/Flip Binary Tree~~](62invert.cpp)
+62. [~~Invert/Flip Binary Tree~~](src/062invert.cc)
+
+    Given the root of a binary tree, invert the tree, and return its root.
+
 63. [~~Binary Tree Maximum Path Sum~~](63psum.cpp)
 64. [~~Binary Tree Level Order Traversal~~](64level.cpp)
 65. [~~Serialize and Deserialize Binary Tree~~](65codec.cpp)
@@ -145,4 +189,9 @@
 109. [(!)~~Basic Calculator~~](109bc.cpp)
 110. [(!?)~~Maximum Profit in Job Scheduling~~](110pft.cpp)
 111. [(!)~~Largest Rectangle in Histogram~~](111hst.cpp)
-112. [~~Reverse a singly-linked list between to indices~~](112lst.cpp)
+112. [~~Reverse a Singly-Linked List Between Two Indices~~](112lst.cpp)
+113. [~~Binary Search~~](src/113bsearch.cc)
+
+    Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums. If target exists, then return its index. Otherwise, return -1.
+
+    You must write an algorithm with O(log n) runtime complexity.

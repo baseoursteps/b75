@@ -32,9 +32,9 @@ maxProfit(const vector<int> &prices)
     int profit = 0;
     int curMin = prices.front();
 
-    for (auto it = ++prices.begin(); it != prices.end(); ++it) {
-        profit = max(profit, *it - curMin);
-        curMin = min(curMin, *it);
+    for (size_t i = 1; i < prices.size(); ++i) {
+        profit = std::max(profit, prices.at(i) - curMin);
+        curMin = std::min(curMin, prices.at(i));
     }
 
     return profit;
