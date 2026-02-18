@@ -1,5 +1,4 @@
 #include "matrix.h"
-#include <iostream>
 #include <sys/types.h>
 #include <vector>
 
@@ -30,34 +29,37 @@ using namespace std;
 // connected to the starting pixel.
 
 void
-ff(matrix<int> &image, int sr, int sc, int o_color)
+floodFill(vector<vector<int>> &image,
+          int                  x,
+          int                  y,
+          int                  neighbourColor,
+          const int            newColor)
 {
-    if (sr < 0 || sc < 0 || sr >= ssize_t(image.size()) ||
-        sc >= ssize_t(image.front().size()))
+    if (x < 0 || x >= image.size() || y < 0 || y >= image.at(x).size()) {
         return;
-
-    if (image.at(sr).at(sc) == o_color) {
-        image.at(sr).at(sc) = -1;
-        ff(image, sr + 1, sc, o_color);
-        ff(image, sr - 1, sc, o_color);
-        ff(image, sr, sc + 1, o_color);
-        ff(image, sr, sc - 1, o_color);
     }
+
+    const auto origColor = image.at(x).at(y);
+
+    if (origColor != neighbourColor) {
+        return;
+    }
+
+    if (origColor == newColor) {
+        return;
+    }
+
+    image.at(x).at(y) = newColor;
+    floodFill(image, x + 1, y, origColor, newColor);
+    floodFill(image, x - 1, y, origColor, newColor);
+    floodFill(image, x, y + 1, origColor, newColor);
+    floodFill(image, x, y - 1, origColor, newColor);
 }
 
 vector<vector<int>>
 floodFill(vector<vector<int>> &image, int sr, int sc, int color)
 {
-    if (image.empty() || image.front().empty())
-        return image;
-
-    ff(image, sr, sc, image.at(sr).at(sc));
-
-    for (auto &l : image)
-        for (auto &c : l)
-            if (c == -1)
-                c = color;
-
+    floodFill(image, sr, sc, image.at(sr).at(sc), color);
     return image;
 }
 

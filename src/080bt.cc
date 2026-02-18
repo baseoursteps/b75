@@ -1,4 +1,3 @@
-#include <algorithm>
 #include <cstdlib>
 #include <iostream>
 #include <vector>
@@ -28,31 +27,35 @@ struct TreeNode
 };
 
 int
-getLevel(TreeNode *node)
+level(TreeNode *root)
 {
-    if (!node)
+    if (!root) {
         return 0;
-
-    auto l = getLevel(node->left), r = getLevel(node->right);
-
-    if (l == -1 || r == -1 || abs(l - r) > 1)
-        return -1;
-    else
-        return 1 + std::max(l, r);
+    } else {
+        return std::max(level(root->left), level(root->right)) + 1;
+    }
 }
 
 bool
 isBalanced(TreeNode *root)
 {
-    if (!root)
-        return true;
+    bool ok { true };
+    if (!root) {
+        return ok;
+    }
 
-    auto l = getLevel(root->left), r = getLevel(root->right);
+    auto l = level(root->left);
+    auto r = level(root->right);
 
-    if (l == -1 || r == -1 || abs(l - r) > 1)
-        return false;
+    ok &= (abs(l - r) <= 1);
 
-    return true;
+    if (ok)
+        ok &= isBalanced(root->left);
+
+    if (ok)
+        ok &= isBalanced(root->right);
+
+    return ok;
 }
 
 int

@@ -139,7 +139,12 @@
 67. [(!)~~Construct Binary Tree from Preorder and Inorder Traversal~~](67build.cpp)
 68. [~~Validate Binary Search Tree~~](68valid.cpp)
 69. [~~Kth Smallest Element in a BST~~](69kth.cpp)
-70. [~~Lowest Common Ancestor of a BST~~](70lca.cpp)
+70. [~~Lowest Common Ancestor of a BST~~](src/070lca.cc)
+
+    Given a binary search tree (BST), find the lowest common ancestor (LCA) node of two given nodes in the BST.
+
+    According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes p and q as the lowest node in T that has both p and q as descendants (where we allow a node to be a descendant of itself).”
+
 71. [~~Implement Trie (Prefix Tree)~~](71trie.cpp)
 72. [~~Add and Search Word~~](72trie.cpp)
 73. [(!)~~Word Search II~~](73words.cpp)
@@ -156,8 +161,25 @@
 
 77. [~~Convert BST to doubly-linked list in-place~~](77bst.cpp)
 78. Longest path cost in binary tree, then normalise all the other paths
-79. [~~Flood Fill~~](79ff.cpp)
-80. [~~Balanced Binary Tree~~](80bt.cpp)
+79. [~~Flood Fill~~](src/079ff.cc)
+
+    You are given an image represented by an m x n grid of integers image, where image[i][j] represents the pixel value of the image. You are also given three integers sr, sc, and color. Your task is to perform a flood fill on the image starting from the pixel image[sr][sc].
+
+    To perform a flood fill:
+
+        - Begin with the starting pixel and change its color to color.
+        - Perform the same process for each pixel that is directly adjacent (pixels that share a side with the original pixel, either horizontally or vertically) and shares the same color as the starting pixel.
+        - Keep repeating this process by checking neighboring pixels of the updated pixels and modifying their color if it matches the original color of the starting pixel.
+        - The process stops when there are no more adjacent pixels of the original color to update.
+
+    Return the modified image after performing the flood fill.
+
+80. [~~Balanced Binary Tree~~](src/080bt.cc)
+
+    Given a binary tree, determine if it is height-balanced.
+
+    A height-balanced binary tree is a binary tree in which the depth of the two subtrees of every node never differs by more than one.
+
 81. [~~Implement Queue Using Stacks~~](81qs.cpp)
 82. [~~First Bad Version~~](82fbv.cpp)
 83. [~~Ransom Note~~](83ran.cpp)
