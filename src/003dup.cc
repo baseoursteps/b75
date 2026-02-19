@@ -1,5 +1,5 @@
+#include <algorithm>
 #include <iostream>
-#include <unordered_set>
 #include <vector>
 
 using namespace std;
@@ -7,10 +7,14 @@ using namespace std;
 bool
 containsDuplicate(vector<int> &nums)
 {
-    unordered_set<int> val { nums.begin(), nums.end() };
-    return val.size() != nums.size();
+    sort(nums.begin(), nums.end());
+    for (size_t i = 1; i < nums.size(); ++i) {
+        if (nums.at(i) == nums.at(i - 1)) {
+            return true;
+        }
+    }
+    return false;
 }
-
 int
 main()
 {

@@ -18,7 +18,10 @@
 
    Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
 
-3. [~~Contains duplicate~~](src/3dup.cpp)
+3. [~~Contains duplicate~~](src/003dup.cc)
+
+    Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+
 4. [(!)~~Product of array except self~~](src/4prod.cpp)
 5. [~~Maximum Subarray~~](src/5max.cpp)
 6. [(!)~~Maximum Product Subarray~~](src/6prod.cpp)
@@ -139,7 +142,12 @@
 
 ## Tree
 
-60. [~~Maximum Depth of Binary Tree~~](src/60depth.cpp)
+60. [~~Maximum Depth of Binary Tree~~](src/060depth.cc)
+
+    Given the root of a binary tree, return its maximum depth.
+
+    A binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
+
 61. [~~Same Tree~~](src/61same.cpp)
 62. [~~Invert/Flip Binary Tree~~](src/062invert.cc)
 
