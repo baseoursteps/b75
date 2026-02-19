@@ -1,6 +1,5 @@
-#include <cstddef>
 #include <iostream>
-#include <vector>
+#include <stack>
 
 using namespace std;
 
@@ -23,9 +22,39 @@ using namespace std;
 //     may simulate a stack using a list or deque (double-ended queue) as long
 //     as you use only a stack's standard operations.
 
+/**
+ * Your MyQueue object will be instantiated and called as such:
+ * MyQueue* obj = new MyQueue();
+ * obj->push(x);
+ * int param_2 = obj->pop();
+ * int param_3 = obj->peek();
+ * bool param_4 = obj->empty();
+ */
+
 class MyQueue
 {
-    vector<int> stack;
+private:
+    stack<int> s1, s2;
+
+    void
+    qify()
+    {
+        while (s1.size()) {
+            auto top = s1.top();
+            s1.pop();
+            s2.push(top);
+        }
+    }
+
+    void
+    dqify()
+    {
+        while (s2.size()) {
+            auto top = s2.top();
+            s2.pop();
+            s1.push(top);
+        }
+    }
 
 public:
     MyQueue() {}
@@ -33,40 +62,31 @@ public:
     void
     push(int x)
     {
-        vector<int> temp;
-        while (stack.size()) {
-            auto v = stack.back();
-            stack.pop_back();
-            temp.push_back(v);
-        }
-
-        temp.push_back(x);
-
-        while (temp.size()) {
-            auto v = temp.back();
-            temp.pop_back();
-            stack.push_back(v);
-        }
+        dqify();
+        s1.push(x);
     }
 
     int
     pop()
     {
-        auto v = stack.back();
-        stack.pop_back();
-        return v;
+        qify();
+        auto el = s2.top();
+        s2.pop();
+        return el;
     }
 
     int
     peek()
     {
-        return stack.back();
+        qify();
+        auto el = s2.top();
+        return el;
     }
 
     bool
     empty()
     {
-        return stack.empty();
+        return s1.empty() && s2.empty();
     }
 };
 

@@ -2,6 +2,8 @@
 #include <iostream>
 #include <vector>
 
+#include "list.hpp"
+
 using namespace std;
 
 // Given the head of a singly linked list, return the middle node of the linked
@@ -13,28 +15,27 @@ using namespace std;
 // Output: [3,4,5]
 // Explanation: The middle node of the list is node 3.
 
-struct ListNode
-{
-    int       val;
-    ListNode *next;
-    ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
-};
-
 ListNode *
 middleNode(ListNode *head)
 {
-    size_t count = 0;
-    for (auto i = head; i != nullptr; i = i->next, count++) {
+    ssize_t count {};
+
+    auto it = head;
+    while (it) {
+        count++;
+        it = it->next;
     }
 
     count /= 2;
 
-    for (size_t i = 0; i < count; ++i)
-        head = head->next;
+    it = head;
 
-    return head;
+    while (count > 0) {
+        it = it->next;
+        count--;
+    }
+
+    return it;
 }
 
 int

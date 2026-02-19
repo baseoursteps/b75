@@ -1,5 +1,5 @@
 #include <iostream>
-#include <vector>
+#include <unordered_map>
 
 using namespace std;
 
@@ -15,27 +15,18 @@ using namespace std;
 // 2. 1 step + 2 steps
 // 3. 2 steps + 1 step
 
-int
-climb(int n, vector<int> &vals)
-{
-    if (n < 1)
-        return 1;
-    else if (vals.at(n) != -1)
-        return vals.at(n);
-    else
-        vals.at(n) = climb(n - 1, vals) + climb(n - 2, vals);
-
-    return vals.at(n);
-}
-
+unordered_map<int, int> sol { { 0, 0 }, { 2, 2 }, { 1, 1 } };
 int
 climbStairs(int n)
 {
-    vector<int> vals(n + 1, -1);
-    vals.at(1) = 1;
-    vals.at(2) = 2;
-
-    return climb(n, vals);
+    if (n <= 0) {
+        return 0;
+    } else if (sol.count(n)) {
+        return sol.at(n);
+    } else {
+        sol[n] = climbStairs(n - 1) + climbStairs(n - 2);
+        return sol[n];
+    }
 }
 
 int

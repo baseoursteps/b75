@@ -28,20 +28,23 @@ isBadVersion(int version)
 }
 
 int
+bsearch(size_t begin, size_t end)
+{
+    while (begin < end) {
+        auto mid = begin + (end - begin) / 2;
+        if (isBadVersion(mid)) {
+            end = mid;
+        } else {
+            begin = mid + 1;
+        }
+    }
+    return begin;
+}
+
+int
 firstBadVersion(int n)
 {
-    int l = 1;
-    int r = n;
-
-    while (l < r) {
-        auto mid = l + (r - l) / 2;
-        if (isBadVersion(mid))
-            r = mid;
-        else
-            l = mid + 1;
-    }
-
-    return l;
+    return bsearch(1, n);
 }
 
 int
