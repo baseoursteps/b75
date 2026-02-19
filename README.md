@@ -23,11 +23,19 @@
     Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
 
 4. [(!)~~Product of array except self~~](src/4prod.cpp)
-5. [~~Maximum Subarray~~](src/5max.cpp)
+5. [~~Maximum Subarray~~](src/005max.cc)
+
+   Given an integer array nums, find the with the largest sum, and return its sum.
+
 6. [(!)~~Maximum Product Subarray~~](src/6prod.cpp)
 7. [~~Find Minimum in Rotated Sorted Array~~](src/7rot.cpp)
 8. [~~Search in Rotated Sorted Array~~](src/8find.cpp)
-9. [(!)~~3 sum~~](src/9sum.cpp)
+9. [(!)~~3 sum~~](src/009sum.cc)
+
+   Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
+
+   Notice that the solution set must not contain duplicate triplets.
+
 10. [(!)~~Container With Most Water~~](src/10water.cpp)
 
 
@@ -71,7 +79,16 @@
 
 ## Interval
 
-35. [~~Insert Interval~~](src/35ii.cpp)
+35. [~~Insert Interval~~](src/035ii.cc)
+
+    You are given an array of non-overlapping intervals intervals where intervals[i] = [starti, endi] represent the start and the end of the ith interval and intervals is sorted in ascending order by starti. You are also given an interval newInterval = [start, end] that represents the start and end of another interval.
+
+    Insert newInterval into intervals such that intervals is still sorted in ascending order by starti and intervals still does not have any overlapping intervals (merge overlapping intervals if necessary).
+
+    Return intervals after the insertion.
+
+    Note that you don't need to modify intervals in-place. You can make a new array and return it.
+
 36. [~~Merge Intervals~~](src/36merge.cpp)
 37. [~~Non-overlapping Intervals~~](src/37non.cpp)
 38. [~~Meeting Rooms (Leetcode Premium)~~](src/38mr.cpp)
@@ -136,7 +153,7 @@
 
     Given a string s, return true if it is a palindrome, or false otherwise.
 
-57. [(?)~~Longest Palindromic Substring~~](src/57lpal.cpp)
+57. [(!)~~Longest Palindromic Substring~~](src/57lpal.cpp)
 58. [~~Palindromic Substrings~~](src/58nps.cpp)
 59. [~~Encode and Decode Strings~~](src/59ende.cpp)
 
@@ -154,7 +171,10 @@
     Given the root of a binary tree, invert the tree, and return its root.
 
 63. [~~Binary Tree Maximum Path Sum~~](src/63psum.cpp)
-64. [~~Binary Tree Level Order Traversal~~](src/64level.cpp)
+64. [~~Binary Tree Level Order Traversal~~](src/064level.cc)
+
+    Given the root of a binary tree, return the level order traversal of its nodes' values. (i.e., from left to right, level by level).
+
 65. [~~Serialize and Deserialize Binary Tree~~](src/65codec.cpp)
 66. [~~Subtree of Another Tree~~](src/66subtree.cpp)
 67. [(!)~~Construct Binary Tree from Preorder and Inorder Traversal~~](src/67build.cpp)
@@ -225,7 +245,19 @@
     Each letter in magazine can only be used once in ransomNote.
 
 84. [~~Majority Element~~](src/84me.cpp)
-85. [~~Diameter of Binary Tree~~](src/85dbt.cpp)
+
+    Given an array nums of size n, return the majority element.
+
+    The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
+
+85. [!~~Diameter of Binary Tree~~](src/085dbt.cc)
+
+    Given the root of a binary tree, return the length of the diameter of the tree.
+
+    The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root.
+
+    The length of a path between two nodes is represented by the number of edges between them.
+
 86. [~~Middle of Linked List~~](src/86mid.cc)
 
     Given the head of a singly linked list, return the middle node of the linked list.
@@ -267,3 +299,9 @@
 114. [~~Add Binary~~](src/114add.cc)
 
      Given two binary strings a and b, return their sum as a binary string.
+
+115. [!~~Longest palindrome~~](src/115pal.cc)
+
+     Given a string s which consists of lowercase or uppercase letters, return the length of the longest  that can be built with those letters.
+
+     Letters are case sensitive, for example, "Aa" is not considered a palindrome.

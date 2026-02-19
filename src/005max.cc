@@ -15,20 +15,18 @@ using namespace std;
 int
 maxSubArray(const vector<int> &nums)
 {
-    int nmx { nums.at(0) }, total { nums.at(0) }, mx { nums.at(0) };
-
-    for (size_t i = 1; i < nums.size(); ++i) {
-        total += nums.at(i);
-
-        if (nmx < 0 || nmx + nums.at(i) < 0)
-            nmx = nums.at(i);
-        else
-            nmx += nums.at(i);
-
-        mx = max(nmx, mx);
+    if (nums.empty()) {
+        return 0;
     }
 
-    return max(total, mx);
+    auto challenger = nums.front(), leader = nums.front();
+
+    for (auto i : nums) {
+        challenger = std::max(challenger + i, i);
+        leader     = std::max(leader, challenger);
+    }
+
+    return leader;
 }
 
 int

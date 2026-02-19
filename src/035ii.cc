@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <cstddef>
 #include <iostream>
 #include <vector>
@@ -22,38 +23,61 @@ using namespace std;
 // Input: intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]], newInterval = [4,8]
 // Output: [[1,2],[3,10],[12,16]]
 // Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].
+
 vector<vector<int>>
-insert(vector<vector<int>> ints, const vector<int> &nint)
+insert(vector<vector<int>> &dq, const vector<int> &newInterval)
 {
-    size_t start;
+    bool sorted {};
 
-    for (start = 0; start < ints.size(); ++start)
-        if (ints.at(start).at(0) > nint.at(0))
-            break;
+    dq.push_back(newInterval);
 
-    // insert
-    ints.insert(ints.begin() + start, nint);
+    sort(dq.begin(), dq.end(), [](auto &a, auto &b) {
+        return a[0] < b[0];
+    });
 
-    // merge
-    for (start = 0; start < ints.size() - 1;) {
-        if (ints.at(start).at(0) >= ints.at(start + 1).at(0) ||
-            ints.at(start).at(1) >= ints.at(start + 1).at(0)) {
-            ints.at(start).at(0) =
-                min(ints.at(start).at(0), ints.at(start + 1).at(0));
-            ints.at(start).at(1) =
-                max(ints.at(start).at(1), ints.at(start + 1).at(1));
+    while (!sorted) {
+        size_t i {};
+        for (i = 1; i < dq.size();) {
+            auto &first  = dq.at(i - 1);
+            auto &second = dq.at(i);
 
-            ints.erase(ints.begin() + start + 1);
-        } else {
-            start++;
+            // a b
+            // c d
+            // a b c d
+            //
+            //   a    b
+            //      c    d
+            //
+            //       a      b
+            //    c     d
+            //
+            //   a          b
+            //       c d
+            if (first[0] < second[0] && first[1] < second[0]) {
+                // keep both
+                i++;
+            } else if (second[0] <= first[1] && second[1] > first[1]) {
+                second[0] = first[0];
+                dq.erase(dq.begin() + (i - 1));
+            } else if (second[0] < first[0] && second[1] >= first[0]) {
+                second[1] = first[1];
+                dq.erase(dq.begin() + (i - 1));
+            } else {
+                second[0] = first[0];
+                second[1] = first[1];
+                dq.erase(dq.begin() + (i - 1));
+            }
+        }
+        if (i == dq.size()) {
+            sorted = true;
         }
     }
 
-    return ints;
+    return dq;
 }
 
 void
-sol(const vector<vector<int>> &intervals, const vector<int> &newInterval)
+sol(vector<vector<int>> &intervals, const vector<int> &newInterval)
 {
     for (auto &&ints : intervals)
         cout << "[" << ints.at(0) << "," << ints.at(1) << "], ";
@@ -73,10 +97,10 @@ int
 main()
 {
     vector<vector<int>> ints  = { { 1, 2 },
-                                 { 3, 5 },
-                                 { 6, 7 },
-                                 { 8, 10 },
-                                 { 12, 16 } },
+                                  { 3, 5 },
+                                  { 6, 7 },
+                                  { 8, 10 },
+                                  { 12, 16 } },
                         ints2 = { { 1, 3 }, { 6, 9 } },
                         ints3 { { 1, 2 }, { 6, 7 } },
                         ints4 { { 11, 15 }, { 17, 23 } };

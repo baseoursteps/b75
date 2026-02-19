@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 
+#include "tree.h"
+
 using namespace std;
 
 // Given the root of a binary tree, return the length of the diameter of the
@@ -12,44 +14,25 @@ using namespace std;
 // The length of a path between two nodes is represented by the number of edges
 // between them.
 
-struct TreeNode
-{
-    int       val;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode() : val(0), left(nullptr), right(nullptr) {}
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-    TreeNode(int x, TreeNode *left, TreeNode *right) :
-        val(x),
-        left(left),
-        right(right)
-    {
+
+    int diameter{};
+
+    int level(TreeNode* n) {
+        if (!n) {
+            return 0;
+        }
+
+        auto l = level(n->left);
+        auto r = level(n->right);
+        diameter = std::max(diameter, l + r);
+
+        return std::max(l, r) + 1;
     }
-};
 
-// max length from it, max length through it or its children
-pair<int, int>
-diam(TreeNode *t)
-{
-    if (!t)
-        return { 0, 0 };
-
-    auto &&[lf, lt] = diam(t->left);
-    auto &&[rf, rt] = diam(t->right);
-
-    pair<int, int> md;
-    md.first  = 1 + std::max(lf, rf);
-    md.second = std::max(lf + rf, std::max(lt, rt));
-
-    return md;
-}
-
-int
-diameterOfBinaryTree(TreeNode *root)
-{
-    auto sol = diam(root);
-    return sol.second;
-}
+    int diameterOfBinaryTree(TreeNode* root) {
+        level(root);
+        return diameter;
+    }
 
 int
 main()

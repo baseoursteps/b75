@@ -13,46 +13,46 @@ using namespace std;
 
 // Input: nums = [-1,0,1,2,-1,-4]
 // Output: [[-1,-1,2],[-1,0,1]]
+
 vector<vector<int>>
-tsum(vector<int> nums)
+threeSum(vector<int> nums)
 {
     vector<vector<int>> sol;
-
-    if (nums.size() < 3)
-        return sol;
 
     sort(nums.begin(), nums.end());
 
     for (size_t i = 0; i < nums.size() - 2; ++i) {
-        if (i && nums.at(i - 1) == nums.at(i))
+        if (i > 0 && nums[i] == nums[i - 1])
             continue;
 
-        size_t left  = i + 1;
-        size_t right = nums.size() - 1;
+        size_t lo = i + 1, hi = nums.size() - 1;
 
-        while (left < right) {
-            auto sum = nums.at(i) + nums.at(left) + nums.at(right);
+        while (lo < hi) {
+            auto sum = nums[lo] + nums[hi] + nums[i];
             if (sum == 0) {
-                sol.push_back({ nums.at(i), nums.at(left), nums.at(right) });
+                sol.push_back({ nums[i], nums[lo], nums[hi] });
+                lo++;
+                hi--;
 
-                left++;
-                while (left < right && nums.at(left) == nums.at(left - 1))
-                    left++;
+                while (lo < hi && nums[lo] == nums[lo - 1])
+                    lo++;
 
-            } else if (sum > 0)
-                --right;
-            else
-                ++left;
+                while (lo < hi && nums[hi] == nums[hi + 1])
+                    hi--;
+            } else if (sum > 0) {
+                hi--;
+            } else {
+                lo++;
+            }
         }
     }
-
     return sol;
 }
 
 void
 sol(const vector<int> &v)
 {
-    for (auto &&arr : tsum(v)) {
+    for (auto &&arr : threeSum(v)) {
         for (auto &&v : arr)
             cout << v << " ";
         cout << "\n";

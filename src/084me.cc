@@ -31,10 +31,11 @@ majorityElementPro(vector<int> &nums)
         if (count == 0) {
             count     = 1;
             candidate = nums.at(i);
-        } else if (candidate == nums.at(i))
+        } else if (candidate == nums.at(i)) {
             count++;
-        else
+        } else {
             count--;
+        }
     }
 
     return candidate;
