@@ -178,8 +178,19 @@
 65. [~~Serialize and Deserialize Binary Tree~~](src/65codec.cpp)
 66. [~~Subtree of Another Tree~~](src/66subtree.cpp)
 67. [(!)~~Construct Binary Tree from Preorder and Inorder Traversal~~](src/67build.cpp)
-68. [~~Validate Binary Search Tree~~](src/68valid.cpp)
-69. [~~Kth Smallest Element in a BST~~](src/69kth.cpp)
+68. [~~Validate Binary Search Tree~~](src/068valid.cc)
+
+    Given the root of a binary tree, determine if it is a valid binary search tree (BST).
+
+    A valid BST is defined as follows:
+      - The left of a node contains only nodes with keys strictly less than the node's key.
+      - The right subtree of a node contains only nodes with keys strictly greater than the node's key.
+      - Both the left and right subtrees must also be binary search trees.
+
+69. [~~Kth Smallest Element in a BST~~](src/069kth.cc)
+
+    Given the root of a binary search tree, and an integer k, return the kth smallest value (1-indexed) of all the values of the nodes in the tree.
+
 70. [~~Lowest Common Ancestor of a BST~~](src/070lca.cc)
 
     Given a binary search tree (BST), find the lowest common ancestor (LCA) node of two given nodes in the BST.
@@ -266,10 +277,42 @@
 
 87. [(!)~~01 Matrix~~](src/87m.cpp)
 88. [~~K Closest Points to Origin~~](src/88k.cpp)
+
+    Given an array of points where points[i] = [xi, yi] represents a point on the X-Y plane and an integer k, return the k closest points to the origin (0, 0).
+
+    The distance between two points on the X-Y plane is the Euclidean distance (i.e., √(x1 - x2)2 + (y1 - y2)2).
+
+    You may return the answer in any order. The answer is guaranteed to be unique (except for the order that it is in).
+
 89. [~~Binary Tree Level Order Traversal~~](src/89lot.cpp)
-90. [~~Evaluate RPN~~](src/90rpn.cpp)
+90. [~~Evaluate RPN~~](src/090rpn.cc)
+
+    You are given an array of strings tokens that represents an arithmetic expression in a Reverse Polish Notation.
+
+    Evaluate the expression. Return an integer that represents the value of the expression.
+
+    Note that:
+      - The valid operators are '+', '-', '*', and '/'.
+      - Each operand may be an integer or another expression.
+      - The division between two integers always truncates toward zero.
+      - There will not be any division by zero.
+      - The input represents a valid arithmetic expression in a reverse polish notation.
+      - The answer and all the intermediate calculations can be represented in a 32-bit integer.
+
+        Input: tokens = ["10","6","9","3","+","-11","*","/","*","17","+","5","+"]
+        Output: 22
+        Explanation: ((10 * (6 / ((9 + 3) * -11))) + 17) + 5
+        = ((10 * (6 / (12 * -11))) + 17) + 5
+        = ((10 * (6 / -132)) + 17) + 5
+        = ((10 * 0) + 17) + 5
+        = (0 + 17) + 5
+        = 17 + 5
+        = 22
+
 91. [(!)~~Course Schedule~~](src/91cs.cpp)
-92. [~~Min Stack~~](src/92ms.cpp)
+92. [~~Min Stack~~](src/092ms.cc)
+
+
 93. [~~Rotting Oranges~~](src/93ro.cpp)
 94. [(!)~~Permutations~~](src/94perm.cpp)
 95. [~~Time-based Key-Value Store~~](src/95tmap.cpp)

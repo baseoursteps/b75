@@ -28,16 +28,37 @@ using namespace std;
 // Output: [[3,3],[-2,4]]
 // Explanation: The answer [[-2,4],[3,3]] would also be accepted.
 
+struct Comparator
+{
+    int
+    edistance(const vector<int> &a)
+    {
+        return (a[0] * a[0]) + (a[1] * a[1]);
+    }
+
+    bool
+    operator()(const vector<int> &a, const vector<int> &b)
+    {
+        return edistance(a) > edistance(b);
+    }
+};
+
 vector<vector<int>>
 kClosest(vector<vector<int>> &points, int k)
 {
-    sort(points.begin(), points.end(), [](auto &a, auto &b) {
-        auto fd = a.at(0) * a.at(0) + a.at(1) * a.at(1);
-        auto sd = b.at(0) * b.at(0) + b.at(1) * b.at(1);
-        return fd < sd;
-    });
+    Comparator c;
 
-    return { points.begin(), points.begin() + k };
+    make_heap(points.begin(), points.end(), c);
+
+    vector<vector<int>> sol;
+
+    for (int i = 0; i < k; ++i) {
+        sol.push_back(points.front());
+        pop_heap(points.begin(), points.end(), c);
+        points.pop_back();
+    }
+
+    return sol;
 }
 
 void

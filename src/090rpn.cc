@@ -1,9 +1,7 @@
-#include <cstddef>
-#include <iostream>
-#include <stdexcept>
+#include <stack>
 #include <string>
-#include <string_view>
 #include <vector>
+#include <iostream>
 
 using namespace std;
 
@@ -32,60 +30,44 @@ using namespace std;
 //= 17 + 5
 //= 22
 
-int
-eval(int n1, int n2, char op)
-{
-    switch (op) {
-        case '+':
-            return n1 + n2;
-        case '-':
-            return n1 - n2;
-        case '*':
-            return n1 * n2;
-        case '/':
-            return n1 / n2;
-        default:
-            throw std::runtime_error("should not be here");
-    }
-}
-
-bool
-is_op(string_view op)
-{
-    if (op.size() > 1) //-11 or 121
-        return false;
-    else {
-        switch (op.at(0)) {
-            case '+':
-            case '-':
-            case '*':
-            case '/':
-                return true;
-            default:
-                return false;
-        }
-    }
-}
+stack<int> nos;
 
 int
 evalRPN(const vector<string> &tokens)
 {
-    vector<int> tok;
+    for (auto &&token : tokens) {
+        if ((token.size() == 1 && std::isdigit(token.front())) ||
+            token.size() > 1) {
+            auto i = stoi(token);
+            nos.push(i);
+        } else {
+            auto j = nos.top();
+            nos.pop();
+            auto i = nos.top();
+            nos.pop();
 
-    for (auto &&val : tokens) {
-        if (!is_op(val))
-            tok.push_back(atoi(val.c_str()));
-        else {
-            auto n2 = tok.back();
-            tok.pop_back();
-            auto n1 = tok.back();
-            tok.pop_back();
-            auto rez = eval(n1, n2, val.at(0));
-            tok.push_back(rez);
+            switch (token.front()) {
+                case '+':
+                    i += j;
+                    break;
+                case '-':
+                    i -= j;
+                    break;
+                case '*':
+                    i *= j;
+                    break;
+                case '/':
+                    i /= j;
+                    break;
+                default:
+                    break;
+            }
+
+            nos.push(i);
         }
     }
 
-    return tok.back();
+    return nos.top();
 }
 
 int
