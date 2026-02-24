@@ -1,6 +1,8 @@
-#include <deque>
 #include <iostream>
+#include <queue>
 #include <vector>
+
+#include "tree.h"
 
 using namespace std;
 
@@ -10,48 +12,39 @@ using namespace std;
 // Input: root = [1,2,3,null,5,null,4]
 // Output: [1,3,4]
 
-struct TreeNode
-{
-    int       val;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode() : val(0), left(nullptr), right(nullptr) {}
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-    TreeNode(int x, TreeNode *left, TreeNode *right) :
-        val(x),
-        left(left),
-        right(right)
-    {
-    }
-};
-
 // The trick seems to be that on each level i have to print the rightmost
 // node...in other words.
+
 vector<int>
 rightSideView(TreeNode *root)
 {
-    if (!root)
-        return {};
+    queue<TreeNode *> q;
+    vector<int>       sol;
 
-    deque<TreeNode *> nodes;
+    if (!root) {
+        return sol;
+    }
 
-    nodes.push_back(root);
+    q.push(root);
 
-    vector<int> sol;
+    while (q.size()) {
+        auto pq = std::move(q);
 
-    while (!nodes.empty()) {
-        auto level = move(nodes);
-        sol.push_back(level.back()->val);
+        while (pq.size()) {
+            auto el = pq.front();
+            pq.pop();
 
-        while (!level.empty()) {
-            auto node = level.front();
-            level.pop_front();
+            if (pq.empty()) {
+                sol.push_back(el->val);
+            }
 
-            if (node->left)
-                nodes.push_back(node->left);
+            if (el->left) {
+                q.push(el->left);
+            }
 
-            if (node->right)
-                nodes.push_back(node->right);
+            if (el->right) {
+                q.push(el->right);
+            }
         }
     }
 

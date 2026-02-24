@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <cstddef>
 #include <iostream>
 #include <vector>
@@ -13,24 +14,30 @@ using namespace std;
 // Explanation: Since intervals [1,3] and [2,6] overlap, merge them into [1,6].
 
 vector<vector<int>>
-merge(vector<vector<int>> vals)
+merge(vector<vector<int>> &intervals)
 {
-    for (size_t i = 0; i < vals.size() - 1;) {
-        if (vals.at(i).at(0) >= vals.at(i + 1).at(0) ||
-            vals.at(i).at(1) >= vals.at(i + 1).at(0)) {
-            vals.at(i).at(0) = min(vals.at(i).at(0), vals.at(i + 1).at(0));
-            vals.at(i).at(1) = max(vals.at(i).at(1), vals.at(i + 1).at(1));
+    sort(intervals.begin(), intervals.end(), [](auto &&a, auto &&b) {
+        return a[0] < b[0];
+    });
 
-            vals.erase(vals.begin() + i + 1);
-        } else
-            i++;
+    for (size_t i = 1; i < intervals.size();) {
+        auto &a = intervals[i - 1];
+        auto &b = intervals[i];
+
+        if (a[1] < b[0]) {
+            ++i;
+        } else {
+            b[0] = std::min(a[0], b[0]);
+            b[1] = std::max(a[1], b[1]);
+            intervals.erase(intervals.begin() + i - 1);
+        }
     }
 
-    return vals;
+    return intervals;
 }
 
 void
-sol(const vector<vector<int>> &vals)
+sol(vector<vector<int>> &vals)
 {
     for (auto &&v : vals)
         cout << v.at(0) << " " << v.at(1) << " | ";

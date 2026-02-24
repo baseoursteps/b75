@@ -111,7 +111,10 @@
 
     Note that you don't need to modify intervals in-place. You can make a new array and return it.
 
-36. [~~Merge Intervals~~](src/36merge.cpp)
+36. [~~Merge Intervals~~](src/036merge.cc)
+
+    Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.
+
 37. [~~Non-overlapping Intervals~~](src/37non.cpp)
 38. [~~Meeting Rooms (Leetcode Premium)~~](src/38mr.cpp)
 39. [~~Meeting Rooms II(Leetcode Premium)~~](src/39mr2.cpp)
@@ -194,7 +197,23 @@
 
     Given a string s, return true if it is a palindrome, or false otherwise.
 
-57. [(!)~~Longest Palindromic Substring~~](src/57lpal.cpp)
+57. [~~Longest Palindromic Substring~~](src/057lpal.cc)
+
+    Given a string s, return the longest palindromic substring in s.
+
+    A string is palindromic if it reads the same forward and backward.
+
+    Example 1:
+
+		Input: s = "babad"
+		Output: "bab"
+		Explanation: "aba" is also a valid answer.
+
+    Example 2:
+
+		Input: s = "cbbd"
+		Output: "bb"
+
 58. [~~Palindromic Substrings~~](src/58nps.cpp)
 59. [~~Encode and Decode Strings~~](src/59ende.cpp)
 
@@ -367,12 +386,26 @@
 98. [(!)~~Partition Equal Subset Sum~~](src/98pess.cpp)
 99. [~~String to Integer (atoi)~~](src/99atoi.cpp)
 100. [(!)~~Subsets~~](src/100ss.cpp)
-101. [~~Binary Tree Right-side View~~](src/101rsv.cpp)
+101. [~~Binary Tree Right-side View~~](src/101rsv.cc)
+
+     Given the root of a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.
+
 102. [(!)~~Letter Combinations of a Phone Number~~](src/102pn.cpp)
 103. [(!)~~Find All Anagrams in a String~~](src/103ana.cpp)
 104. [(!)~~Minimum Height Trees~~](src/104ht.cpp)
 105. [(!)~~Task Scheduler~~](src/105ts.cpp)
-106. [(!)~~LRU Cache~~](src/106lru.cpp)
+106. [~~LRU Cache~~](src/106lru.cc)
+
+     Design a data structure that follows the constraints of a Least Recently Used (LRU) cache.
+
+     Implement the LRUCache class:
+
+       - `LRUCache(int capacity)` Initialize the LRU cache with positive size capacity.
+       - `int get(int key)` Return the value of the key if the key exists, otherwise return -1.
+       - `void put(int key, int value)` Update the value of the key if the key exists. Otherwise, add the key-value pair to the cache. If the number of keys exceeds the capacity from this operation, evict the least recently used key.
+
+     The functions get and put must each run in O(1) average time complexity.
+
 107. [(!)~~Trapping Rain Water~~](src/107trp.cpp)
 108. [(!)~~Word Ladder~~](src/108wl.cpp)
 109. [(!)~~Basic Calculator~~](src/109bc.cpp)

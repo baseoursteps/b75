@@ -1,9 +1,7 @@
 #include <cstddef>
-#include <iostream>
 #include <list>
 #include <unordered_map>
 #include <utility>
-#include <vector>
 
 using namespace std;
 
@@ -27,44 +25,45 @@ using namespace std;
 
 class LRUCache
 {
-    const size_t                                       cap;
-    unordered_map<int, list<pair<int, int>>::iterator> keys;
-    list<pair<int, int>>                               vals;
+private:
+    using Key   = int;
+    using Value = int;
+    const size_t                                         m_capacity;
+    list<pair<Key, Value>>                               m_list;
+    unordered_map<Key, list<pair<Key, Value>>::iterator> m_trick;
 
 public:
-    LRUCache(int capacity) : cap(capacity) {};
-
-    void
-    put(int key, int value)
-    {
-        auto &&f = keys.find(key);
-
-        // update
-        if (f != keys.end()) {
-            f->second->second = value;
-            // move to front
-            vals.splice(vals.begin(), vals, f->second);
-        } else {
-            // evict
-            if (keys.size() == cap) {
-                keys.erase(vals.back().first);
-                vals.pop_back();
-            }
-            vals.emplace_front(key, value);
-            keys.insert({ key, vals.begin() });
-        }
-    }
+    LRUCache(int capacity) : m_capacity(capacity) {}
 
     int
     get(int key)
     {
-        auto &&f = keys.find(key);
-        if (f == keys.end()) {
-            return -1;
+        auto it = m_trick.find(key);
+        if (it != m_trick.end()) {
+            m_list.splice(m_list.begin(), m_list, it->second);
+            return it->second->second;
         } else {
-            // move to front of list
-            vals.splice(vals.begin(), vals, f->second);
-            return vals.front().second;
+            return -1;
+        }
+    }
+
+    void
+    put(int key, int value)
+    {
+        auto it = m_trick.find(key);
+
+        if (it != m_trick.end()) {
+            it->second->second = value;
+            m_list.splice(m_list.begin(), m_list, it->second);
+        } else {
+            m_list.push_front({ key, value });
+            m_trick.insert({ key, m_list.begin() });
+        }
+
+        if (m_list.size() > m_capacity) {
+            auto evict = m_list.back();
+            m_list.pop_back();
+            m_trick.erase(evict.first);
         }
     }
 };
