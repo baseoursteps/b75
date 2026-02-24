@@ -14,25 +14,28 @@ using namespace std;
 // The length of a path between two nodes is represented by the number of edges
 // between them.
 
+int diameter {};
 
-    int diameter{};
-
-    int level(TreeNode* n) {
-        if (!n) {
-            return 0;
-        }
-
-        auto l = level(n->left);
-        auto r = level(n->right);
-        diameter = std::max(diameter, l + r);
-
-        return std::max(l, r) + 1;
+int
+level(TreeNode *n)
+{
+    if (!n) {
+        return 0;
     }
 
-    int diameterOfBinaryTree(TreeNode* root) {
-        level(root);
-        return diameter;
-    }
+    auto l   = level(n->left);
+    auto r   = level(n->right);
+    diameter = std::max(diameter, l + r);
+
+    return std::max(l, r) + 1;
+}
+
+int
+diameterOfBinaryTree(TreeNode *root)
+{
+    level(root);
+    return diameter;
+}
 
 int
 main()

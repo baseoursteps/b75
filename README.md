@@ -137,7 +137,26 @@
 
     Return the head of the merged linked list.
 
-43. [~~Merge K Sorted Lists~~](src/43merge.cpp)
+43. [~~Merge K Sorted Lists~~](src/043merge.cc)
+
+    You are given an array of k linked-lists lists, each linked-list is sorted in ascending order.
+
+    Merge all the linked-lists into one sorted linked-list and return it.
+
+    Example:
+
+		Input: lists = [[1,4,5],[1,3,4],[2,6]]
+		Output: [1,1,2,3,4,4,5,6]
+		Explanation: The linked-lists are:
+		[
+		  1->4->5,
+		  1->3->4,
+		  2->6
+		]
+		merging them into one sorted linked list:
+		1->1->2->3->4->4->5->6
+
+
 44. [~~Remove Nth Node From End Of List~~](src/44end.cpp)
 45. [(!)~~Reorder List~~](src/45reorder.cpp)
 
@@ -297,7 +316,12 @@
 
     If there are two middle nodes, return the second middle node.
 
-87. [(!)~~01 Matrix~~](src/87m.cpp)
+87. [(!)~~01 Matrix~~](src/087m.cc)
+
+    Given an m x n binary matrix mat, return the distance of the nearest 0 for each cell.
+
+    The distance between two cells sharing a common edge is 1.
+
 88. [~~K Closest Points to Origin~~](src/88k.cpp)
 
     Given an array of points where points[i] = [xi, yi] represents a point on the X-Y plane and an integer k, return the k closest points to the origin (0, 0).
