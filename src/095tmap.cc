@@ -1,6 +1,6 @@
 #include <iostream>
+#include <map>
 #include <string>
-#include <tuple>
 #include <unordered_map>
 
 using namespace std;
@@ -24,48 +24,36 @@ using namespace std;
 
 class TimeMap
 {
-    using min_map  = tuple<int, unordered_map<int, string>>;
-    using time_map = unordered_map<string, min_map>;
-
-    time_map vals;
-
 public:
+    unordered_map<string, map<int, string>> mp;
+
     TimeMap() {}
 
     void
     set(string key, string value, int timestamp)
     {
-        if (!vals.count(key))
-            vals.insert(
-                { move(key), { timestamp, { { timestamp, move(value) } } } });
-        else {
-            auto &[min, times] = vals.at(key);
-            if (timestamp < min)
-                min = timestamp;
-
-            times.insert({ timestamp, move(value) });
-        }
+        mp[key][timestamp] = value;
     }
 
     string
     get(string key, int timestamp)
     {
-        auto &&v = vals.find(key);
-        if (v == vals.end())
-            return {};
-        else {
-            auto &&[min, times] = v->second;
-            if (times.count(timestamp))
-                return times.at(timestamp);
-            else
-                while (timestamp >= min) {
-                    timestamp--;
-                    auto &&rez = times.find(timestamp);
-                    if (rez != times.end())
-                        return rez->second;
-                }
+        auto time_map = mp.find(key);
 
+        if (time_map == mp.end()) {
             return {};
+        } else {
+            auto &tm = time_map->second;
+            if (tm.count(timestamp)) {
+                return tm[timestamp];
+            } else {
+                for (auto it = tm.rbegin(); it != tm.rend(); ++it) {
+                    if (it->first < timestamp) {
+                        return it->second;
+                    }
+                }
+                return {};
+            }
         }
     }
 };

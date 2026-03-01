@@ -172,7 +172,29 @@
 
 ## String
 
-50. [~~Longest Substring Without Repeating Characters~~](src/50ls.cpp)
+50. [~~Longest Substring Without Repeating Characters~~](src/050ls.cc)
+    
+    Given a string s, find the length of the longest without duplicate characters.
+
+    Example 1:
+
+		Input: s = "abcabcbb"
+		Output: 3
+		Explanation: The answer is "abc", with the length of 3. Note that "bca" and "cab" are also correct answers.
+
+    Example 2:
+
+		Input: s = "bbbbb"
+		Output: 1
+		Explanation: The answer is "b", with the length of 1.
+
+    Example 3:
+
+		Input: s = "pwwkew"
+		Output: 3
+		Explanation: The answer is "wke", with the length of 3.
+		Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
+
 51. [~~Longest Repeating Character Replacement~~](src/51lc.cpp)
 52. [~~Minimum Window Substring~~](src/52wnd.cpp)
 53. [~~Valid Anagram~~](src/053ana.cc)
@@ -257,7 +279,34 @@
 
     According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes p and q as the lowest node in T that has both p and q as descendants (where we allow a node to be a descendant of itself).”
 
-71. [~~Implement Trie (Prefix Tree)~~](src/71trie.cpp)
+71. [~~Implement Trie (Prefix Tree)~~](src/071trie.cc)
+
+    A trie (pronounced as "try") or prefix tree is a tree data structure used to efficiently store and retrieve keys in a dataset of strings. There are various applications of this data structure, such as autocomplete and spellchecker.
+
+    Implement the Trie class:
+      - `Trie()` Initializes the trie object.
+      - `void insert(String word)` Inserts the string word into the trie.
+      - `boolean search(String word)` Returns true if the string word is in the trie (i.e., was inserted before), and false otherwise.
+      - `boolean startsWith(String prefix)` Returns true if there is a previously inserted string word that has the prefix prefix, and false otherwise.
+
+
+    Example 1:
+
+        Input
+        ["Trie", "insert", "search", "search", "startsWith", "insert", "search"]
+        [[], ["apple"], ["apple"], ["app"], ["app"], ["app"], ["app"]]
+        Output
+        [null, null, true, false, true, null, true]
+
+        Explanation
+        Trie trie = new Trie();
+        trie.insert("apple");
+        trie.search("apple");   // return True
+        trie.search("app");     // return False
+        trie.startsWith("app"); // return True
+        trie.insert("app");
+        trie.search("app");     // return True
+
 72. [~~Add and Search Word~~](src/72trie.cpp)
 73. [(!)~~Word Search II~~](src/73words.cpp)
 
@@ -380,11 +429,46 @@
 
 93. [~~Rotting Oranges~~](src/93ro.cpp)
 94. [(!)~~Permutations~~](src/94perm.cpp)
-95. [~~Time-based Key-Value Store~~](src/95tmap.cpp)
+95. [~~Time-based Key-Value Store~~](src/095tmap.cc)
+
+    Design a time-based key-value data structure that can store multiple values for the same key at different time stamps and retrieve the key's value at a certain timestamp.
+
+    Implement the TimeMap class:
+
+      - `TimeMap()` Initializes the object of the data structure.
+      - `void set(String key, String value, int timestamp)` Stores the key key with the value value at the given time timestamp.
+      - `String get(String key, int timestamp)` Returns a value such that set was called previously, with timestamp_prev <= timestamp. If there are multiple such values, it returns the value associated with the largest timestamp_prev. If there are no values, it returns "".
+
+    Example 1:
+
+		Input
+		["TimeMap", "set", "get", "get", "set", "get", "get"]
+		[[], ["foo", "bar", 1], ["foo", 1], ["foo", 3], ["foo", "bar2", 4], ["foo", 4], ["foo", 5]]
+		Output
+		[null, null, "bar", "bar", null, "bar2", "bar2"]
+
+		Explanation
+		TimeMap timeMap = new TimeMap();
+		timeMap.set("foo", "bar", 1);  // store the key "foo" and value "bar" along with timestamp = 1.
+		timeMap.get("foo", 1);         // return "bar"
+		timeMap.get("foo", 3);         // return "bar", since there is no value corresponding to foo at timestamp 3 and timestamp 2, then the only value is at timestamp 1 is "bar".
+		timeMap.set("foo", "bar2", 4); // store the key "foo" and value "bar2" along with timestamp = 4.
+		timeMap.get("foo", 4);         // return "bar2"
+		timeMap.get("foo", 5);         // return "bar2"
+
 96. [(!)~~Accounts Merge~~](src/96am.cpp)
 97. [~~Sort Colors~~](src/97sc.cpp)
 98. [(!)~~Partition Equal Subset Sum~~](src/98pess.cpp)
-99. [~~String to Integer (atoi)~~](src/99atoi.cpp)
+99. [~~String to Integer (atoi)~~](src/099atoi.cc)
+
+    Implement the myAtoi(string s) function, which converts a string to a 32-bit signed integer.
+
+    The algorithm for myAtoi(string s) is as follows:
+      - Whitespace: Ignore any leading whitespace (" ").
+      - Signedness: Determine the sign by checking if the next character is '-' or '+', assuming positivity if neither present.
+      - Conversion: Read the integer by skipping leading zeros until a non-digit character is encountered or the end of the string is reached. If no digits were read, then the result is 0.
+      - Rounding: If the integer is out of the 32-bit signed integer range [-231, 231 - 1], then round the integer to remain in the range. Specifically, integers less than -231 should be rounded to -231, and integers greater than 231 - 1 should be rounded to 231 - 1.
+
 100. [(!)~~Subsets~~](src/100ss.cpp)
 101. [~~Binary Tree Right-side View~~](src/101rsv.cc)
 
@@ -427,3 +511,9 @@
      Given a string s which consists of lowercase or uppercase letters, return the length of the longest  that can be built with those letters.
 
      Letters are case sensitive, for example, "Aa" is not considered a palindrome.
+
+116. [~~Lowest Common Ancestor of a Binary Tree~~](src/116lca.cc)
+
+     Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.
+
+     According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes p and q as the lowest node in T that has both p and q as descendants (where we allow a node to be a descendant of itself).”

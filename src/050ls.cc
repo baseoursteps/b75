@@ -20,25 +20,17 @@ using namespace std;
 size_t
 longest(const string &s)
 {
-    if (s.size() < 2)
-        return s.size();
+    size_t              left {}, right {};
+    size_t              max {};
+    unordered_set<char> st;
 
-    size_t max { 0 };
-    size_t first { 0 };
-
-    while (first < s.size()) {
-        unordered_set<char> chars;
-        chars.insert(s.at(first));
-
-        size_t j = first + 1;
-
-        for (; j < s.size() && chars.count(s.at(j)) == 0; ++j)
-            chars.insert(s.at(j));
-
-        if (j - first > max)
-            max = j - first;
-
-        first = j;
+    for (right = 0; right < s.size(); ++right) {
+        while (st.count(s[right])) {
+            st.erase(s[left]);
+            left++;
+        }
+        st.insert(s[right]);
+        max = std::max(max, st.size());
     }
 
     return max;
